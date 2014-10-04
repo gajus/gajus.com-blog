@@ -83,6 +83,16 @@
     <li>The <code>for..of</code> loop will throw away the <code>return</code> value.</li>
 </ul>
 
+<h2>Delegating <code>yield</code></h2>
+
+<p>The <code>yield*</code>operator delegates to another generator.</p>
+
+<code data-gist-id="b6e0bfbe2c92153f0aef"></code>
+
+<p>Delegating a generator to another generator is in effect the same as importing the body of the target generator to the destination generator. For illustration purposes only, the above code unfolds to the following:</p>
+
+<code data-gist-id="956a086d53c7be1f2ef5"></code>
+
 <h2>Throw</h2>
 
 <p>In addition to advancing the generator instance using <code>next()</code>, you can <code>throw()</code>. Whatever is thrown will propagate back up into the code of the generator, i.e. it can be handled either within or outside the generator instance:</p>
@@ -129,9 +139,9 @@
 
 <p>Notice that the execution was interrupted before <code>curry(foo, 'c')</code> was called.</p>
 
-<h2>Libraries</h2>
+<h2>Libraries To Streamline Generator Based Flow-Control</h2>
 
-<p>There are several generator based flow-control libraries:</p>
+<p>There are several existing libraries that implement a variation of the above controller, as well as offer interoperability with promises, trunks and other techniques.</p>
 
 <ul>
     <li>https://github.com/jmar777/suspend</li>
