@@ -1,8 +1,8 @@
-<p>This article is a result of extensive research about BDD in JavaScript. I have extracted the core principals and terminology, and provide practical examples that illustrate the benefits of BDD.</p>
+This article is a result of extensive research about BDD in JavaScript. I have extracted the core principals and terminology, and provide practical examples that illustrate the benefits of BDD.
 
-<h2>What is BDD?</h2>
+## What is BDD?
 
-<p>In the 8th chapter, the author quotes various definitions of BDD. I favor the following:</p>
+In the 8th chapter, the author quotes various definitions of BDD. I favor the following:
 
 <figure class="quote">
     <blockquote>
@@ -18,68 +18,62 @@
     <figcaption>Dan North</figcaption>
 </figure>
 
-<p>Developers pull features from stakeholders and develop them outside-in. The features are pulled in the order of their business value. The most important feature is implemented first and it's implemented outside in. No time is wasted building unnecessary code.</p>
+Developers pull features from stakeholders and develop them outside-in. The features are pulled in the order of their business value. The most important feature is implemented first and it's implemented outside in. No time is wasted building unnecessary code.
 
-<p>The evolution of a programmer that is learning TDD is a good guidance in understanding the BDD:</p>
+The evolution of a programmer that is learning TDD is a good guidance in understanding the BDD:
 
-<ol>
-    <li>Most developers start by writing unit tests to existing code.</li>
-    <li>After some practise they learn about the advantages of writing the test first. They might learn about good testing practices like AAA, stubs and factories at this point.</li>
-    <li>They realise that TDD can be used as a design tool to discover the API of the production code.</li>
-    <li>Eventually they recognise that TDD is not about testing. It's about defining behavior and writing specifications that serve as living documentation. They also discover mocks and outside-in development.</li>
-</ol>
+1. Most developers start by writing unit tests to existing code.
+1. After some practise they learn about the advantages of writing the test first. They might learn about good testing practices like AAA, stubs and factories at this point.
+1. They realise that TDD can be used as a design tool to discover the API of the production code.
+1. Eventually they recognise that TDD is not about testing. It's about defining behavior and writing specifications that serve as living documentation. They also discover mocks and outside-in development.
 
-<h2>Principles of BDD</h2>
+## Principles of BDD
 
-<h3>Baby Steps</h3>
+### Baby Steps
 
-<p>Characteristic feature of BDD is using "baby steps" to achieve tight feedback loop. In practice, this means writing a single spec knowing that it will fail, writing the missing code logic, returning to the spec. This continues switching between code and test cases results in less scanning of the code.</p>
+Characteristic feature of BDD is using "baby steps" to achieve tight feedback loop. In practice, this means writing a single spec knowing that it will fail, writing the missing code logic, returning to the spec. This continues switching between code and test cases results in less scanning of the code.
 
-<h3>Red/Green/Refactor</h3>
+### Red/Green/Refactor
 
-<p>You want to achieve Red/Green/Refactor routine:</p>
+You want to achieve Red/Green/Refactor routine:
 
 <ul>
    <li>Are all specs green (after the implementation phase)?</li>
    <li>Is <em>one</em> spec red (after coding another spec)?</li>
 </ul>
 
-<p>The idea is to ensure that the test really works and can catch an error.</p>
+The idea is to ensure that the test really works and can catch an error.
 
 <h3>Triangulation</h3>
 
-<p>Instead of filling in a real implementation, you can fake it with a dummy value.</p>
+Instead of filling in a real implementation, you can fake it with a dummy value.
 
 <code data-gist-id="563d34d5156de201bdc9"></code>
 
-<p>You know that your implementation isn't ready, but all the specs are showing green. This implies that there is a spec example missing.</p>
+You know that your implementation isn't ready, but all the specs are showing green. This implies that there is a spec example missing.
 
 <code data-gist-id="3b262d7a41819d8bc26a"></code>
 
-<p>You proceed until you've covered just enough test cases to produce a general solution.</p>
+You proceed until you've covered just enough test cases to produce a general solution.
 
 <code data-gist-id="ee8fdb2a6340484e0ef6"></code>
 
-<p>The idea is to gain moment and insight into how the algorithm should behave.</p>
+The idea is to gain moment and insight into how the algorithm should behave.
 
-<h3>Summary</h3>
+### Summary
 
-<p>Behaviour Driven Development is characterized by:</p>
+Behaviour Driven Development is characterized by:
 
-<ul>
-    <li>Spec/Error driven coding.</li>
-    <li>Using baby-steps to achieve a "tight feedback-loop".</li>
-    <li>Follow the Red-Green-Refactor (RGR) cycle to avoid the false-positives.</li>
-</ul>
+* Spec/Error driven coding.
+* Using baby-steps to achieve a "tight feedback-loop".
+* Follow the Red-Green-Refactor (RGR) cycle to avoid the false-positives.
 
-<p>The result:</p>
+The result:
 
-<ul>
-    <li>Software design driven by needs.</li>
-    <li>RGR cycle enhances the separation of the workload. Red is for the interface, green is for the implementation.</li>
-    <li>Specs enable code refactoring.</li>
-    <li>Automated tests that read like documentation. Prefer DAMP over DRY.</li>
-</ul>
+* Software design driven by needs.
+* RGR cycle enhances the separation of the workload. Red is for the interface, green is for the implementation.
+* Specs enable code refactoring.
+* Automated tests that read like documentation. Prefer DAMP over DRY.
 
 <dl>
     <dt>Refactoring</dt>
@@ -89,137 +83,121 @@
     <dd>Descriptive and Meaningful Phrases.</dd>
 </dl>
 
-<h2>BDD in Practice</h2>
+## BDD in Practice
 
-<h3>Using Test Doubles</h3>
+### Using Test Doubles
 
-<h4>Dummies</h4>
+#### Dummies
 
-<p>Empty object that does nothing.</p>
+Empty object that does nothing.
 
-<ul>
-    <li>Objects are passed around but never actually used. Usually they are just used to fill parameter lists.[http://martinfowler.com/articles/mocksArentStubs.html]</li>
-</ul>
+* Objects are passed around but never actually used. Usually they are just used to fill parameter lists.[^http://martinfowler.com/articles/mocksArentStubs.html]
 
 <code data-gist-id="dfa125b63e6ddeffed6c"></code>
 
-<h4>Stubs</h4>
+#### Stubs
 
-<p>Method designed just for testing.</p>
+Method designed just for testing.
 
-<ul>
-    <li>Stub objects provide a valid response, but it's static – no matter what input you pass in, you'll always get the same response.[http://stackoverflow.com/a/1830000/368691]</li>
-    <li>An object that provides predefined answers to method calls.[http://stackoverflow.com/a/5180286/368691]</li>
-    <li>Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test. Stubs may also record information about calls, such as an email gateway stub that remembers the messages it 'sent', or maybe only how many messages it "sent".[http://martinfowler.com/articles/mocksArentStubs.html]</li>
-    <li>A stub will never cause a test to fail.[http://ayende.com/Wiki/Rhino+Mocks+3.5.ashx]</li>
-    <li>Stub is simple fake object. It just makes sure test runs smoothly.[http://stackoverflow.com/a/3459431/368691]</li>
-</ul>
+* Stub objects provide a valid response, but it's static – no matter what input you pass in, you'll always get the same response.[^http://stackoverflow.com/a/1830000/368691]
+* An object that provides predefined answers to method calls.[^http://stackoverflow.com/a/5180286/368691]
+* Stubs provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test. Stubs may also record information about calls, such as an email gateway stub that remembers the messages it 'sent', or maybe only how many messages it "sent".[^http://martinfowler.com/articles/mocksArentStubs.html]
+* A stub will never cause a test to fail.[^http://ayende.com/Wiki/Rhino+Mocks+3.5.ashx]
+* Stub is simple fake object. It just makes sure test runs smoothly.[^http://stackoverflow.com/a/3459431/368691]
 
 <code data-gist-id="98316f5154cbcb60d55b"></code>
 
-<h4>Mocks</h4>
+#### Mocks
 
-<p>Object designed just for testing.</p>
+Object designed just for testing.
 
-<ul>
-    <li>Mock objects are used in mock test cases – they validate that certain methods are called on those objects.[http://stackoverflow.com/a/1830000/368691]</li>
-    <li>An object on which you set expectations.[http://stackoverflow.com/a/5180286/368691]</li>
-</ul>
+* Mock objects are used in mock test cases – they validate that certain methods are called on those objects.[^http://stackoverflow.com/a/1830000/368691]
+* An object on which you set expectations.[^http://stackoverflow.com/a/5180286/368691]
 
 <code data-gist-id="ab5190a2e747906128c4"></code>
 
-<h3>Example Factory</h3>
+### Example Factory
 
-<p>Method used to instantiate the SUT object with canonical values, overwriting only the properties relevant to the test case.</p>
+Method used to instantiate the SUT object with canonical values, overwriting only the properties relevant to the test case.
 
 <code data-gist-id="d75de7f3fdbfd6486d6a"></code>
 
-<p>See https://github.com/petejkim/factory-lady, Object Mother and Test Data Builders.</p>
+See https://github.com/petejkim/factory-lady, Object Mother and Test Data Builders.
 
-<h3>SEE Pattern</h3>
+### SEE Pattern
 
-<p>Every spec needs these three parts and nothing more – in this order:</p>
+Every spec needs these three parts and nothing more – in this order:
 
-<ol>
-    <li>Setup, e.g. create an object.</li>
-    <li>Execute, i.e. introduce change to the object state.</li>
-    <li>Expect, i.e. state an expectation of what should have happened.</li>
-</ol>
+1. Setup, e.g. create an object.
+1. Execute, i.e. introduce change to the object state.
+1. Expect, i.e. state an expectation of what should have happened.
 
-<p>You might have also heard <dfn>Given, When, Then</dfn> (GWT):</p>
+You might have also heard <dfn>Given, When, Then</dfn> (GWT):
 
-<ol>
-    <li>Given a condition.</li>
-    <li>When I do something.</li>
-    <li>Then I expect something to happen.</li>
-</ol>
+* Given a condition.
+* When I do something.
+* Then I expect something to happen.
 
-<p>The two are identical. The phrasing of the latter might be easier to comprehend.</p>
+The two are identical. The phrasing of the latter might be easier to comprehend.
 
 <code data-gist-id="e810abf7ab619b71dd9c"></code>
 
-<p>As a result, your specs must adhere to the following rules:</p>
+As a result, your specs must adhere to the following rules:
 
-<ul>
-    <li>The spec must implement not more than one execution.</li>
-    <li>The spec must abstain from several expectations.</li>
-    <li>Do not use if-statement that lead to multiple execution and expectation branches – write several specs instead.</li>
-</ul>
+* The spec must implement not more than one execution.
+* The spec must abstain from several expectations.
+* Do not use if-statement that lead to multiple execution and expectation branches – write several specs instead.
 
-<p>In TDD world it is known as the <dfn>Arrange, Act, Assert</dfn> (AAA) pattern.</p>
+In TDD world it is known as the <dfn>Arrange, Act, Assert</dfn> (AAA) pattern.
 
-<h2>Organizing Specs</h2>
+## Organizing Specs
 
-<p>The specs are organised either per Feature or per Fixture.</p>
+The specs are organised either per Feature or per Fixture.
 
-<h3>Per Feature</h3>
+### Per Feature
 
-<p>This way of organizing a spec is also referred to as "by topic".</p>
+This way of organizing a spec is also referred to as "by topic".
 
-<p>The benefit of organizing your spec per feature makes it easier to write.</p>
+The benefit of organizing your spec per feature makes it easier to write.
 
 <code data-gist-id="2a7fd107f897213aee67"></code>
 
-<h3>Per Fixture</h3>
+### Per Fixture
 
-<p>This way or organizing a spec is also referred to as "by example data".</p>
+This way or organizing a spec is also referred to as "by example data".
 
-<p>The benefit of organizing your spec per fixture makes the resulting spec more descriptive and easier to read. The additional benefit is because all your examples share the same example data, you need to state it only once (e.g. using <code>beforeEach</code> setup function).</p>
+The benefit of organizing your spec per fixture makes the resulting spec more descriptive and easier to read. The additional benefit is because all your examples share the same example data, you need to state it only once (e.g. using <code>beforeEach</code> setup function).
 
 <code data-gist-id="c93f8bac2fe402881916"></code>
 
-<h2>High and Low Level Spec</h2>
+## High and Low Level Spec
 
-<p>BDD project usually starts with writing the outer circle (high level specs) and then proceeding the implementation of the inner circle (low level specs).</p>
+BDD project usually starts with writing the outer circle (high level specs) and then proceeding the implementation of the inner circle (low level specs).
 
-<h3>Outside-In Development</h3>
+### Outside-In Development
 
-<p>You start with the implementation of the specs that have meaning to the business using hypothetical components (aka. acceptance test):</p>
+You start with the implementation of the specs that have meaning to the business using hypothetical components (aka. acceptance test):
 
 <code data-gist-id="32a61ea65183c4584682"></code>
 
-<p>Acceptance test is a high level spec that describes a scenario from the view of an application user. In contrast to the low level spec, a high level spec does not have an SUT.</p>
+Acceptance test is a high level spec that describes a scenario from the view of an application user. In contrast to the low level spec, a high level spec does not have an SUT.
 
-<p>The upside of the outside-in development is that you never write code that will become redundant (the requirement can be traced back to the spec). The downside is that you cannot run the test cases until the implementation is complete.</p>
+The upside of the outside-in development is that you never write code that will become redundant (the requirement can be traced back to the spec). The downside is that you cannot run the test cases until the implementation is complete.
 
-<ul>
-   <li>They help to become aware of bugs – all spec violations are considered a bug (defect awareness).</li>
-   <li>They are most useful when shown to stakeholders.</li>
-   <li>There are usually only a few. they don't include all special cases. their main purpose is to provide an overview of the required functionality.</li>
-</ul>
+* They help to become aware of bugs – all spec violations are considered a bug (defect awareness).
+* They are most useful when shown to stakeholders.
+* There are usually only a few. they don't include all special cases. their main purpose is to provide an overview of the required functionality.
 
-<h3>Inside-Out Development</h3>
+### Inside-Out Development
 
-<p>You start with the basic components that make up the application:</p>
+You start with the basic components that make up the application:
 
 <code data-gist-id="87acb66a7823c2d71c05"></code>
 
-<ul>
-   <li>They help to find specific bugs (localization).</li>
-   <li>They are most useful to the developers who maintain the code later.</li>
-   <li>There are usually a lot of low level specs since they need to cover all the low level details, special and edge cases.</li>
-</ul>
+* They help to find specific bugs (localization).
+* They are most useful to the developers who maintain the code later.
+* There are usually a lot of low level specs since they need to cover all the low level details, special and edge cases.
 
-<h2>Further Read</h2>
+## Further Read
 
-<p>This post is a result of reading "Behaviour Driven Development with Javascript by Marco Emrich"[http://www.amazon.com/Behaviour-Driven-Development-JavaScript-introduction-ebook/dp/B00CYMN3J2] and the subsequent research. Another grate resource, although beyond JavaScript scope, is "BDD in Action: Behavior-driven development for the whole software lifecycle"[http://www.amazon.com/BDD-Action-Behavior-driven-development-lifecycle/dp/161729165X/ref=sr_1_1?ie=UTF8&qid=1409062963&sr=8-1&keywords=BDD].</p>
+This post is a result of reading "Behaviour Driven Development with Javascript by Marco Emrich"[^http://www.amazon.com/Behaviour-Driven-Development-JavaScript-introduction-ebook/dp/B00CYMN3J2] and the subsequent research. Another grate resource, although beyond JavaScript scope, is "BDD in Action: Behavior-driven development for the whole software lifecycle"[^http://www.amazon.com/BDD-Action-Behavior-driven-development-lifecycle/dp/161729165X/].
