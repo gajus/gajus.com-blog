@@ -1,14 +1,4 @@
-There are many articles about JavaScript generators:</p>
-
-* http://odetocode.com/blogs/scott/archive/2014/02/17/thoughts-on-javascript-generators.aspx
-* http://truffles.me.uk/playing-with-es6-generators-to-make-a-maybe-in-javascript
-* http://devsmash.com/blog/whats-the-big-deal-with-generators
-* http://luisvega.me/understanding-node-generators
-* http://webreflection.blogspot.com/2013/06/on-harmony-javascript-generators.html
-* http://blog.alexmaccaw.com/how-yield-will-transform-node
-* http://tobyho.com/2013/06/16/what-are-generators/
-
-Nonetheless, I have struggled to understand the execution order and use cases. I have summarized the learning process that got me to understanding ES6 generators.</p>
+There are many articles [^http://odetocode.com/blogs/scott/archive/2014/02/17/thoughts-on-javascript-generators.aspx] [^http://truffles.me.uk/playing-with-es6-generators-to-make-a-maybe-in-javascript] [^http://devsmash.com/blog/whats-the-big-deal-with-generators] [^http://luisvega.me/understanding-node-generators] [^http://webreflection.blogspot.com/2013/06/on-harmony-javascript-generators.html] [^http://blog.alexmaccaw.com/how-yield-will-transform-node] [^http://tobyho.com/2013/06/16/what-are-generators/] about JavaScript generators. I have read them all and nonetheless I have struggled to understand the execution order and what are the use cases. I have summarized the learning process that got me to understanding ES6 generators.
 
 ## Building an Iterator from a Generator
 
@@ -71,7 +61,7 @@ The best way to understand the execution flow of the generators is to play aroun
 
 ## Iterating Using the <code>for...of</code> Statement
 
-The iterator object returned from the generator is compliant with the "iterable" protocol (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/iterable). Therefore, you can use the <code>for...of</code> statement (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) to loop through the generator.</p>
+The iterator object returned from the generator is compliant with the ["iterable"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/iterable) protocol. Therefore, you can use the [<code>for...of</code> statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) to loop through the generator.</p>
 
 <code data-gist-id="d16ceb1b0b664405a63b"></code>
 
