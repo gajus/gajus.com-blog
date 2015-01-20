@@ -1,0 +1,10 @@
+{
+  "name": "documentation-generator",
+  "description": "Generates documentation for Lo-Dash v3.",
+  "dependencies": {
+    "request-promise": "~0.3.3",
+    "bluebird": "~2.8.1",
+    "comment-parser": "~0.2.4",
+    "lodash": "~2.4.1"
+  }
+}
