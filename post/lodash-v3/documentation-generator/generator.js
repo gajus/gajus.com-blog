@@ -90,8 +90,8 @@ Promise
         index += '| [`' + name + '`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#' + name.toLowerCase() + ')| ' + comments.description.replace(/\n/g, ' ') + ' |\n';
 
         docs += '### ' + name + '\n\n';
-        docs += 'https://raw.githubusercontent.com/lodash/lodash/es6/' + method.name + '.js\n';
-        docs += comments.description;
+        docs += 'https://raw.githubusercontent.com/lodash/lodash/es6/' + method.name + '.js\n\n';
+        docs += comments.description.split('\n').join('\n\n');
 
         params = _.where(comments.tags, {tag: 'param'});
 
