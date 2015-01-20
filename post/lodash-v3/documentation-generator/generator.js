@@ -5,7 +5,8 @@ var _ = require('lodash'),
     fs = require('fs'),
     methods,
     lastGroup,
-    docs = '';
+    docs = '',
+    index = '';
 
 methods = [
     'string/camelCase',
@@ -79,27 +80,36 @@ Promise
         if (lastGroup !== group) {
             docs += '## ' + group + '\n\n';
 
+            index += '\n### ' + group + '\n\n';
+            index += '| Name | Description |\n';
+            index += '| --- | --- |\n';
+
             lastGroup = group;
         }
 
+        index += '| [`' + name + '`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#' + name.toLowerCase() + ')| ' + comments.description.replace(/\n/g, ' ') + ' |\n';
+
         docs += '### ' + name + '\n\n';
+        docs += 'https://raw.githubusercontent.com/lodash/lodash/es6/' + method.name + '.js\n';
         docs += comments.description;
 
         params = _.where(comments.tags, {tag: 'param'});
 
-        docs += '\n\n#### Arguments\n\n';
+        if (params.length) {
+            docs += '\n\n#### Parameters\n\n';
 
-        docs += '| Name | Type | Description |\n';
-        docs += '| --- | --- | --- |\n';
+            docs += '| Name | Type | Description |\n';
+            docs += '| --- | --- | --- |\n';
 
-        params.forEach(function (param) {
-            docs += '| `' + param.name + '` | `' + param.type + '` | ' + param.description + '|\n';
-        });
+            params.forEach(function (param) {
+                docs += '| `' + param.name + '` | `' + param.type + '` | ' + param.description + '|\n';
+            });
+        }
 
         returns = _.where(comments.tags, {tag: 'returns'});
 
         if (returns.length) {
-            docs += '\n#### Returns\n\n';
+            docs += '\n\n#### Returns\n\n';
 
             docs += '| Type | Description |\n';
             docs += '| --- | --- |\n';
@@ -116,4 +126,6 @@ Promise
     })
     .then(function () {
         fs.writeFileSync(__dirname + '/../documentation.md', docs);
+
+        console.log(index);
     });
