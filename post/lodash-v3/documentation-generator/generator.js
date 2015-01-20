@@ -59,7 +59,7 @@ methods = [
 ];
 
 docs += '# Lo-Dash v3 Documentation\n\n';
-docs += 'lo-Dash v3 documentation generated from source code as described in the [article](http://gajus.com/blog/4/lodash).\n\n';
+docs += 'Lo-Dash v3 documentation generated from the source code.\n\n';
 
 Promise
     .all(methods)
