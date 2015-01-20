@@ -1,0 +1,485 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'git+https://github.com/lodash/lodash-cli.git' ]
+2 info using npm@1.3.6
+3 info using node@v0.10.26
+4 warn package.json documentation-generator@ No repository field.
+5 warn package.json documentation-generator@ No README data
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'git+https://github.com/lodash/lodash-cli.git', null ]
+8 verbose cache add name=undefined spec="git+https://github.com/lodash/lodash-cli.git" args=["git+https://github.com/lodash/lodash-cli.git",null]
+9 verbose parsed url { protocol: 'git+https:',
+9 verbose parsed url   slashes: true,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: 'github.com',
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: 'github.com',
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: '/lodash/lodash-cli.git',
+9 verbose parsed url   path: '/lodash/lodash-cli.git',
+9 verbose parsed url   href: 'git+https://github.com/lodash/lodash-cli.git' }
+10 silly lockFile fee0a640-github-com-lodash-lodash-cli-git git+https://github.com/lodash/lodash-cli.git
+11 verbose lock git+https://github.com/lodash/lodash-cli.git /home/gajus/.npm/fee0a640-github-com-lodash-lodash-cli-git.lock
+12 verbose addRemoteGit [ 'https://github.com/lodash/lodash-cli.git', 'master' ]
+13 verbose git clone https://github.com/lodash/lodash-cli.git Initialized empty Git repository in /home/gajus/.npm/_git-remotes/https-github-com-lodash-lodash-cli-git-88736ad0/
+14 verbose git fetch -a origin (https://github.com/lodash/lodash-cli.git)
+15 verbose git rev-list -n1 master f59acdc633d22d739e14a003621501a79f019f88
+16 verbose resolved git url git+https://github.com/lodash/lodash-cli.git#f59acdc633d22d739e14a003621501a79f019f88
+17 verbose tar unpack /home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/tmp.tgz
+18 silly lockFile 021425da-63792-0-8938885827083141-package tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package
+19 verbose lock tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package /home/gajus/.npm/021425da-63792-0-8938885827083141-package.lock
+20 silly lockFile 0a0a8e42-63792-0-8938885827083141-tmp-tgz tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/tmp.tgz
+21 verbose lock tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/tmp.tgz /home/gajus/.npm/0a0a8e42-63792-0-8938885827083141-tmp-tgz.lock
+22 silly gunzTarPerm modes [ '755', '644' ]
+23 silly gunzTarPerm extractEntry
+24 silly gunzTarPerm modified mode [ '', 509, 493 ]
+25 silly gunzTarPerm extractEntry .gitattributes
+26 silly gunzTarPerm modified mode [ '.gitattributes', 436, 420 ]
+27 silly gunzTarPerm extractEntry .gitignore
+28 silly gunzTarPerm modified mode [ '.gitignore', 436, 420 ]
+29 silly gunzTarPerm extractEntry .travis.yml
+30 silly gunzTarPerm modified mode [ '.travis.yml', 436, 420 ]
+31 silly gunzTarPerm extractEntry CONTRIBUTING.md
+32 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 436, 420 ]
+33 silly gunzTarPerm extractEntry LICENSE.txt
+34 silly gunzTarPerm modified mode [ 'LICENSE.txt', 436, 420 ]
+35 silly gunzTarPerm extractEntry README.md
+36 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+37 silly gunzTarPerm extractEntry bin/
+38 silly gunzTarPerm modified mode [ 'bin/', 509, 493 ]
+39 silly gunzTarPerm extractEntry bin/lodash
+40 silly gunzTarPerm modified mode [ 'bin/lodash', 436, 420 ]
+41 silly gunzTarPerm extractEntry lib/
+42 silly gunzTarPerm modified mode [ 'lib/', 509, 493 ]
+43 silly gunzTarPerm extractEntry lib/minify.js
+44 silly gunzTarPerm modified mode [ 'lib/minify.js', 509, 493 ]
+45 silly gunzTarPerm extractEntry lib/post-compile.js
+46 silly gunzTarPerm modified mode [ 'lib/post-compile.js', 436, 420 ]
+47 silly gunzTarPerm extractEntry lib/pre-compile.js
+48 silly gunzTarPerm modified mode [ 'lib/pre-compile.js', 436, 420 ]
+49 silly gunzTarPerm extractEntry lib/util.js
+50 silly gunzTarPerm modified mode [ 'lib/util.js', 509, 493 ]
+51 silly gunzTarPerm extractEntry npm-shrinkwrap.json
+52 silly gunzTarPerm modified mode [ 'npm-shrinkwrap.json', 436, 420 ]
+53 silly gunzTarPerm extractEntry package.json
+54 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+55 silly gunzTarPerm extractEntry template/
+56 silly gunzTarPerm modified mode [ 'template/', 509, 493 ]
+57 silly gunzTarPerm extractEntry template/license.jst
+58 silly gunzTarPerm modified mode [ 'template/license.jst', 436, 420 ]
+59 silly gunzTarPerm extractEntry template/package.jst
+60 silly gunzTarPerm modified mode [ 'template/package.jst', 436, 420 ]
+61 silly gunzTarPerm extractEntry template/readme.jst
+62 silly gunzTarPerm modified mode [ 'template/readme.jst', 436, 420 ]
+63 silly gunzTarPerm extractEntry test/
+64 silly gunzTarPerm modified mode [ 'test/', 509, 493 ]
+65 silly gunzTarPerm extractEntry test/fixture/
+66 silly gunzTarPerm modified mode [ 'test/fixture/', 509, 493 ]
+67 silly gunzTarPerm extractEntry test/fixture/a.jst
+68 silly gunzTarPerm modified mode [ 'test/fixture/a.jst', 436, 420 ]
+69 silly gunzTarPerm extractEntry test/fixture/b.jst
+70 silly gunzTarPerm modified mode [ 'test/fixture/b.jst', 436, 420 ]
+71 silly gunzTarPerm extractEntry test/fixture/c.jst
+72 silly gunzTarPerm modified mode [ 'test/fixture/c.jst', 436, 420 ]
+73 silly gunzTarPerm extractEntry test/fixture/c/
+74 silly gunzTarPerm modified mode [ 'test/fixture/c/', 509, 493 ]
+75 silly gunzTarPerm extractEntry test/fixture/c/c.jst
+76 silly gunzTarPerm modified mode [ 'test/fixture/c/c.jst', 436, 420 ]
+77 silly gunzTarPerm extractEntry test/fixture/d.jst
+78 silly gunzTarPerm modified mode [ 'test/fixture/d.jst', 436, 420 ]
+79 silly gunzTarPerm extractEntry test/fixture/e.jst
+80 silly gunzTarPerm modified mode [ 'test/fixture/e.jst', 436, 420 ]
+81 silly gunzTarPerm extractEntry test/fixture/f.tpl
+82 silly gunzTarPerm modified mode [ 'test/fixture/f.tpl', 436, 420 ]
+83 silly gunzTarPerm extractEntry test/npm/
+84 silly gunzTarPerm modified mode [ 'test/npm/', 509, 493 ]
+85 silly gunzTarPerm extractEntry test/npm/index.js
+86 silly gunzTarPerm modified mode [ 'test/npm/index.js', 436, 420 ]
+87 silly gunzTarPerm extractEntry test/test.js
+88 silly gunzTarPerm modified mode [ 'test/test.js', 436, 420 ]
+89 silly lockFile 021425da-63792-0-8938885827083141-package tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package
+90 silly lockFile 021425da-63792-0-8938885827083141-package tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package
+91 silly lockFile 0a0a8e42-63792-0-8938885827083141-tmp-tgz tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/tmp.tgz
+92 silly lockFile 0a0a8e42-63792-0-8938885827083141-tmp-tgz tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/tmp.tgz
+93 verbose tar pack [ '/home/gajus/.npm/lodash-cli/3.0.0/package.tgz',
+93 verbose tar pack   '/home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package' ]
+94 verbose tarball /home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+95 verbose folder /home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package
+96 silly lockFile 021425da-63792-0-8938885827083141-package tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package
+97 verbose lock tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package /home/gajus/.npm/021425da-63792-0-8938885827083141-package.lock
+98 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+99 verbose lock tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz /home/gajus/.npm/01c44be2-npm-lodash-cli-3-0-0-package-tgz.lock
+100 silly lockFile 021425da-63792-0-8938885827083141-package tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package
+101 silly lockFile 021425da-63792-0-8938885827083141-package tar:///home/gajus/tmp/npm-18894-R6zM1pk-/1421765463792-0.8938885827083141/package
+102 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+103 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+104 silly lockFile 87d2af8e-jus-npm-lodash-cli-3-0-0-package /home/gajus/.npm/lodash-cli/3.0.0/package
+105 verbose lock /home/gajus/.npm/lodash-cli/3.0.0/package /home/gajus/.npm/87d2af8e-jus-npm-lodash-cli-3-0-0-package.lock
+106 silly lockFile 87d2af8e-jus-npm-lodash-cli-3-0-0-package /home/gajus/.npm/lodash-cli/3.0.0/package
+107 silly lockFile 87d2af8e-jus-npm-lodash-cli-3-0-0-package /home/gajus/.npm/lodash-cli/3.0.0/package
+108 verbose tar unpack /home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+109 silly lockFile de585d58-jus-npm-lodash-cli-3-0-0-package tar:///home/gajus/.npm/lodash-cli/3.0.0/package
+110 verbose lock tar:///home/gajus/.npm/lodash-cli/3.0.0/package /home/gajus/.npm/de585d58-jus-npm-lodash-cli-3-0-0-package.lock
+111 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+112 verbose lock tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz /home/gajus/.npm/01c44be2-npm-lodash-cli-3-0-0-package-tgz.lock
+113 silly gunzTarPerm modes [ '755', '644' ]
+114 silly gunzTarPerm extractEntry package.json
+115 silly gunzTarPerm extractEntry README.md
+116 silly gunzTarPerm extractEntry LICENSE.txt
+117 silly gunzTarPerm extractEntry bin/lodash
+118 silly gunzTarPerm extractEntry lib/minify.js
+119 silly gunzTarPerm extractEntry lib/post-compile.js
+120 silly gunzTarPerm extractEntry lib/pre-compile.js
+121 silly gunzTarPerm extractEntry lib/util.js
+122 silly gunzTarPerm extractEntry template/license.jst
+123 silly gunzTarPerm extractEntry template/package.jst
+124 silly gunzTarPerm extractEntry template/readme.jst
+125 silly lockFile de585d58-jus-npm-lodash-cli-3-0-0-package tar:///home/gajus/.npm/lodash-cli/3.0.0/package
+126 silly lockFile de585d58-jus-npm-lodash-cli-3-0-0-package tar:///home/gajus/.npm/lodash-cli/3.0.0/package
+127 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+128 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+129 verbose chmod /home/gajus/.npm/lodash-cli/3.0.0/package.tgz 644
+130 verbose chown /home/gajus/.npm/lodash-cli/3.0.0/package.tgz [ 502, 503 ]
+131 silly lockFile 88736ad0-github-com-lodash-lodash-cli-git https://github.com/lodash/lodash-cli.git
+132 silly resolved [ { name: 'lodash-cli',
+132 silly resolved     version: '3.0.0',
+132 silly resolved     description: 'The Lo-Dash command-line interface.',
+132 silly resolved     homepage: 'https://lodash.com/custom-builds',
+132 silly resolved     license: 'MIT',
+132 silly resolved     main: 'bin/lodash',
+132 silly resolved     bin: { lodash: 'bin/lodash' },
+132 silly resolved     keywords: [ 'builder', 'compile', 'customize', 'lodash', 'util' ],
+132 silly resolved     author:
+132 silly resolved      { name: 'John-David Dalton',
+132 silly resolved        email: 'john.david.dalton@gmail.com',
+132 silly resolved        url: 'http://allyoucanleet.com/' },
+132 silly resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+132 silly resolved     repository: { type: 'git', url: 'lodash/lodash-cli' },
+132 silly resolved     scripts: { test: 'echo "See the repository CONTRIBUTING.md for testing instructions."' },
+132 silly resolved     dependencies:
+132 silly resolved      { 'closure-compiler': '0.2.6',
+132 silly resolved        glob: '~4.3.5',
+132 silly resolved        'lodash-compat': '3.0.0',
+132 silly resolved        'uglify-js': '2.4.16' },
+132 silly resolved     devDependencies: { 'qunit-extras': '~1.4.1', qunitjs: '~1.16.0' },
+132 silly resolved     files:
+132 silly resolved      [ 'LICENSE.txt',
+132 silly resolved        'bin/lodash',
+132 silly resolved        'lib/minify.js',
+132 silly resolved        'lib/pre-compile.js',
+132 silly resolved        'lib/post-compile.js',
+132 silly resolved        'lib/util.js',
+132 silly resolved        'template/license.jst',
+132 silly resolved        'template/package.jst',
+132 silly resolved        'template/readme.jst' ],
+132 silly resolved     readme: '# lodash-cli v3.0.0\n\nThe [Lo-Dash](https://lodash.com/) command-line interface for creating custom builds & precompiling templates.\n\n## Dive in\n\nCheck out the [Lo-Dash custom builds documentation](https://lodash.com/custom-builds) for build commands & usage examples.<br>\nThe changelog for this release is available on our [wiki](https://github.com/lodash/lodash-cli/wiki/Changelog).\n\n## Installation\n\nUsing npm:\n\n```bash\n$ {sudo -H} npm i -g npm\n$ {sudo -H} npm i -g lodash-cli\n$ lodash -h\n```\n\n## Support\n\nTested in Node.js 0.8.28 & 0.10.35.\n\n**Note:** Node.js 0.10.8-0.10.11 [have](https://github.com/joyent/node/issues/5622) [bugs](https://github.com/joyent/node/issues/5688) preventing minified builds.\n',
+132 silly resolved     readmeFilename: 'README.md',
+132 silly resolved     _id: 'lodash-cli@3.0.0',
+132 silly resolved     dist: { shasum: '5ed82e86540b223893bdee6f5a9b741c6d4409df' },
+132 silly resolved     _resolved: 'git+https://github.com/lodash/lodash-cli.git#f59acdc633d22d739e14a003621501a79f019f88',
+132 silly resolved     _from: 'git+https://github.com/lodash/lodash-cli.git' } ]
+133 info install lodash-cli@3.0.0 into /var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator
+134 info installOne lodash-cli@3.0.0
+135 info /var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/lodash-cli unbuild
+136 verbose tar unpack /home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+137 silly lockFile 7e402026-enerator-node-modules-lodash-cli tar:///var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/lodash-cli
+138 verbose lock tar:///var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/lodash-cli /home/gajus/.npm/7e402026-enerator-node-modules-lodash-cli.lock
+139 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+140 verbose lock tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz /home/gajus/.npm/01c44be2-npm-lodash-cli-3-0-0-package-tgz.lock
+141 silly gunzTarPerm modes [ '755', '644' ]
+142 silly gunzTarPerm extractEntry package.json
+143 silly gunzTarPerm extractEntry README.md
+144 silly gunzTarPerm extractEntry LICENSE.txt
+145 silly gunzTarPerm extractEntry bin/lodash
+146 silly gunzTarPerm extractEntry lib/minify.js
+147 silly gunzTarPerm extractEntry lib/post-compile.js
+148 silly gunzTarPerm extractEntry lib/pre-compile.js
+149 silly gunzTarPerm extractEntry lib/util.js
+150 silly gunzTarPerm extractEntry template/license.jst
+151 silly gunzTarPerm extractEntry template/package.jst
+152 silly gunzTarPerm extractEntry template/readme.jst
+153 silly lockFile 7e402026-enerator-node-modules-lodash-cli tar:///var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/lodash-cli
+154 silly lockFile 7e402026-enerator-node-modules-lodash-cli tar:///var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/lodash-cli
+155 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+156 silly lockFile 01c44be2-npm-lodash-cli-3-0-0-package-tgz tar:///home/gajus/.npm/lodash-cli/3.0.0/package.tgz
+157 info preinstall lodash-cli@3.0.0
+158 verbose readDependencies using package.json deps
+159 verbose readDependencies using package.json deps
+160 verbose cache add [ 'closure-compiler@0.2.6', null ]
+161 verbose cache add name=undefined spec="closure-compiler@0.2.6" args=["closure-compiler@0.2.6",null]
+162 verbose parsed url { protocol: null,
+162 verbose parsed url   slashes: null,
+162 verbose parsed url   auth: null,
+162 verbose parsed url   host: null,
+162 verbose parsed url   port: null,
+162 verbose parsed url   hostname: null,
+162 verbose parsed url   hash: null,
+162 verbose parsed url   search: null,
+162 verbose parsed url   query: null,
+162 verbose parsed url   pathname: 'closure-compiler@0.2.6',
+162 verbose parsed url   path: 'closure-compiler@0.2.6',
+162 verbose parsed url   href: 'closure-compiler@0.2.6' }
+163 verbose cache add name="closure-compiler" spec="0.2.6" args=["closure-compiler","0.2.6"]
+164 verbose parsed url { protocol: null,
+164 verbose parsed url   slashes: null,
+164 verbose parsed url   auth: null,
+164 verbose parsed url   host: null,
+164 verbose parsed url   port: null,
+164 verbose parsed url   hostname: null,
+164 verbose parsed url   hash: null,
+164 verbose parsed url   search: null,
+164 verbose parsed url   query: null,
+164 verbose parsed url   pathname: '0.2.6',
+164 verbose parsed url   path: '0.2.6',
+164 verbose parsed url   href: '0.2.6' }
+165 verbose addNamed [ 'closure-compiler', '0.2.6' ]
+166 verbose addNamed [ '0.2.6', '0.2.6' ]
+167 silly lockFile e0e0009e-closure-compiler-0-2-6 closure-compiler@0.2.6
+168 verbose lock closure-compiler@0.2.6 /home/gajus/.npm/e0e0009e-closure-compiler-0-2-6.lock
+169 verbose cache add [ 'glob@~4.3.5', null ]
+170 verbose cache add name=undefined spec="glob@~4.3.5" args=["glob@~4.3.5",null]
+171 verbose parsed url { protocol: null,
+171 verbose parsed url   slashes: null,
+171 verbose parsed url   auth: null,
+171 verbose parsed url   host: null,
+171 verbose parsed url   port: null,
+171 verbose parsed url   hostname: null,
+171 verbose parsed url   hash: null,
+171 verbose parsed url   search: null,
+171 verbose parsed url   query: null,
+171 verbose parsed url   pathname: 'glob@~4.3.5',
+171 verbose parsed url   path: 'glob@~4.3.5',
+171 verbose parsed url   href: 'glob@~4.3.5' }
+172 verbose cache add name="glob" spec="~4.3.5" args=["glob","~4.3.5"]
+173 verbose parsed url { protocol: null,
+173 verbose parsed url   slashes: null,
+173 verbose parsed url   auth: null,
+173 verbose parsed url   host: null,
+173 verbose parsed url   port: null,
+173 verbose parsed url   hostname: null,
+173 verbose parsed url   hash: null,
+173 verbose parsed url   search: null,
+173 verbose parsed url   query: null,
+173 verbose parsed url   pathname: '~4.3.5',
+173 verbose parsed url   path: '~4.3.5',
+173 verbose parsed url   href: '~4.3.5' }
+174 verbose addNamed [ 'glob', '~4.3.5' ]
+175 verbose addNamed [ null, '>=4.3.5-0 <4.4.0-0' ]
+176 silly lockFile 85d3ad16-glob-4-3-5 glob@~4.3.5
+177 verbose lock glob@~4.3.5 /home/gajus/.npm/85d3ad16-glob-4-3-5.lock
+178 verbose cache add [ 'lodash-compat@3.0.0', null ]
+179 verbose cache add name=undefined spec="lodash-compat@3.0.0" args=["lodash-compat@3.0.0",null]
+180 verbose parsed url { protocol: null,
+180 verbose parsed url   slashes: null,
+180 verbose parsed url   auth: null,
+180 verbose parsed url   host: null,
+180 verbose parsed url   port: null,
+180 verbose parsed url   hostname: null,
+180 verbose parsed url   hash: null,
+180 verbose parsed url   search: null,
+180 verbose parsed url   query: null,
+180 verbose parsed url   pathname: 'lodash-compat@3.0.0',
+180 verbose parsed url   path: 'lodash-compat@3.0.0',
+180 verbose parsed url   href: 'lodash-compat@3.0.0' }
+181 verbose cache add name="lodash-compat" spec="3.0.0" args=["lodash-compat","3.0.0"]
+182 verbose parsed url { protocol: null,
+182 verbose parsed url   slashes: null,
+182 verbose parsed url   auth: null,
+182 verbose parsed url   host: null,
+182 verbose parsed url   port: null,
+182 verbose parsed url   hostname: null,
+182 verbose parsed url   hash: null,
+182 verbose parsed url   search: null,
+182 verbose parsed url   query: null,
+182 verbose parsed url   pathname: '3.0.0',
+182 verbose parsed url   path: '3.0.0',
+182 verbose parsed url   href: '3.0.0' }
+183 verbose addNamed [ 'lodash-compat', '3.0.0' ]
+184 verbose addNamed [ '3.0.0', '3.0.0' ]
+185 silly lockFile 3c21c534-lodash-compat-3-0-0 lodash-compat@3.0.0
+186 verbose lock lodash-compat@3.0.0 /home/gajus/.npm/3c21c534-lodash-compat-3-0-0.lock
+187 verbose cache add [ 'uglify-js@2.4.16', null ]
+188 verbose cache add name=undefined spec="uglify-js@2.4.16" args=["uglify-js@2.4.16",null]
+189 verbose parsed url { protocol: null,
+189 verbose parsed url   slashes: null,
+189 verbose parsed url   auth: null,
+189 verbose parsed url   host: null,
+189 verbose parsed url   port: null,
+189 verbose parsed url   hostname: null,
+189 verbose parsed url   hash: null,
+189 verbose parsed url   search: null,
+189 verbose parsed url   query: null,
+189 verbose parsed url   pathname: 'uglify-js@2.4.16',
+189 verbose parsed url   path: 'uglify-js@2.4.16',
+189 verbose parsed url   href: 'uglify-js@2.4.16' }
+190 verbose cache add name="uglify-js" spec="2.4.16" args=["uglify-js","2.4.16"]
+191 verbose parsed url { protocol: null,
+191 verbose parsed url   slashes: null,
+191 verbose parsed url   auth: null,
+191 verbose parsed url   host: null,
+191 verbose parsed url   port: null,
+191 verbose parsed url   hostname: null,
+191 verbose parsed url   hash: null,
+191 verbose parsed url   search: null,
+191 verbose parsed url   query: null,
+191 verbose parsed url   pathname: '2.4.16',
+191 verbose parsed url   path: '2.4.16',
+191 verbose parsed url   href: '2.4.16' }
+192 verbose addNamed [ 'uglify-js', '2.4.16' ]
+193 verbose addNamed [ '2.4.16', '2.4.16' ]
+194 silly lockFile 20fcf559-uglify-js-2-4-16 uglify-js@2.4.16
+195 verbose lock uglify-js@2.4.16 /home/gajus/.npm/20fcf559-uglify-js-2-4-16.lock
+196 silly addNameRange { name: 'glob', range: '>=4.3.5-0 <4.4.0-0', hasData: false }
+197 verbose url raw lodash-compat/3.0.0
+198 verbose url resolving [ 'https://registry.npmjs.org/', './lodash-compat/3.0.0' ]
+199 verbose url resolved https://registry.npmjs.org/lodash-compat/3.0.0
+200 info trying registry request attempt 1 at 14:51:04
+201 http GET https://registry.npmjs.org/lodash-compat/3.0.0
+202 verbose url raw closure-compiler/0.2.6
+203 verbose url resolving [ 'https://registry.npmjs.org/', './closure-compiler/0.2.6' ]
+204 verbose url resolved https://registry.npmjs.org/closure-compiler/0.2.6
+205 info trying registry request attempt 1 at 14:51:04
+206 verbose etag "I3D7KGEM7LAZWJWSOCFGJJSS"
+207 http GET https://registry.npmjs.org/closure-compiler/0.2.6
+208 verbose url raw glob
+209 verbose url resolving [ 'https://registry.npmjs.org/', './glob' ]
+210 verbose url resolved https://registry.npmjs.org/glob
+211 info trying registry request attempt 1 at 14:51:04
+212 verbose etag "SRRWGGPL6V94MIR6QKPMBZHL"
+213 http GET https://registry.npmjs.org/glob
+214 verbose url raw uglify-js/2.4.16
+215 verbose url resolving [ 'https://registry.npmjs.org/', './uglify-js/2.4.16' ]
+216 verbose url resolved https://registry.npmjs.org/uglify-js/2.4.16
+217 info trying registry request attempt 1 at 14:51:04
+218 verbose etag "15GXROFMIO0K0BMM3T3RH5IS3"
+219 http GET https://registry.npmjs.org/uglify-js/2.4.16
+220 http 304 https://registry.npmjs.org/glob
+221 silly registry.get cb [ 304,
+221 silly registry.get   { date: 'Tue, 20 Jan 2015 14:51:04 GMT',
+221 silly registry.get     server: 'Apache',
+221 silly registry.get     via: '1.1 varnish',
+221 silly registry.get     'last-modified': 'Tue, 20 Jan 2015 14:51:04 GMT',
+221 silly registry.get     'cache-control': 'max-age=60',
+221 silly registry.get     etag: '"SRRWGGPL6V94MIR6QKPMBZHL"',
+221 silly registry.get     age: '2',
+221 silly registry.get     'x-served-by': 'cache-ams4123-AMS',
+221 silly registry.get     'x-cache': 'HIT',
+221 silly registry.get     'x-cache-hits': '1',
+221 silly registry.get     'x-timer': 'S1421765464.054062,VS0,VE0',
+221 silly registry.get     vary: 'Accept',
+221 silly registry.get     'content-length': '0',
+221 silly registry.get     'keep-alive': 'timeout=10, max=50',
+221 silly registry.get     connection: 'Keep-Alive' } ]
+222 verbose etag glob from cache
+223 silly addNameRange number 2 { name: 'glob', range: '>=4.3.5-0 <4.4.0-0', hasData: true }
+224 silly addNameRange versions [ 'glob',
+224 silly addNameRange   [ '1.1.0',
+224 silly addNameRange     '2.0.9',
+224 silly addNameRange     '2.0.8',
+224 silly addNameRange     '2.0.7',
+224 silly addNameRange     '2.1.0',
+224 silly addNameRange     '3.0.0',
+224 silly addNameRange     '3.0.1',
+224 silly addNameRange     '3.1.0',
+224 silly addNameRange     '3.1.1',
+224 silly addNameRange     '3.1.2',
+224 silly addNameRange     '3.1.3',
+224 silly addNameRange     '3.1.4',
+224 silly addNameRange     '3.1.5',
+224 silly addNameRange     '3.1.6',
+224 silly addNameRange     '3.1.7',
+224 silly addNameRange     '3.1.9',
+224 silly addNameRange     '3.1.10',
+224 silly addNameRange     '3.1.11',
+224 silly addNameRange     '3.1.12',
+224 silly addNameRange     '3.1.13',
+224 silly addNameRange     '3.1.14',
+224 silly addNameRange     '3.1.15',
+224 silly addNameRange     '3.1.16',
+224 silly addNameRange     '3.1.17',
+224 silly addNameRange     '3.1.18',
+224 silly addNameRange     '3.1.19',
+224 silly addNameRange     '3.1.20',
+224 silly addNameRange     '3.1.21',
+224 silly addNameRange     '3.2.0',
+224 silly addNameRange     '3.2.1',
+224 silly addNameRange     '3.2.3',
+224 silly addNameRange     '3.2.4',
+224 silly addNameRange     '3.2.5',
+224 silly addNameRange     '3.2.6',
+224 silly addNameRange     '3.2.7',
+224 silly addNameRange     '3.2.8',
+224 silly addNameRange     '3.2.9',
+224 silly addNameRange     '3.2.10',
+224 silly addNameRange     '3.2.11',
+224 silly addNameRange     '4.0.0',
+224 silly addNameRange     '4.0.1',
+224 silly addNameRange     '4.0.2',
+224 silly addNameRange     '4.0.3',
+224 silly addNameRange     '4.0.4',
+224 silly addNameRange     '4.0.5',
+224 silly addNameRange     '4.0.6',
+224 silly addNameRange     '4.1.2-beta',
+224 silly addNameRange     '4.1.2',
+224 silly addNameRange     '4.1.3',
+224 silly addNameRange     '4.1.4',
+224 silly addNameRange     '4.1.5',
+224 silly addNameRange     '4.1.6',
+224 silly addNameRange     '4.2.0',
+224 silly addNameRange     '4.2.1',
+224 silly addNameRange     '4.2.2',
+224 silly addNameRange     '4.3.0',
+224 silly addNameRange     '4.3.1',
+224 silly addNameRange     '4.3.2',
+224 silly addNameRange     '4.3.3',
+224 silly addNameRange     '4.3.4',
+224 silly addNameRange     '4.3.5' ] ]
+225 verbose addNamed [ 'glob', '4.3.5' ]
+226 verbose addNamed [ '4.3.5', '4.3.5' ]
+227 silly lockFile 88cb2229-glob-4-3-5 glob@4.3.5
+228 verbose lock glob@4.3.5 /home/gajus/.npm/88cb2229-glob-4-3-5.lock
+229 silly lockFile 88cb2229-glob-4-3-5 glob@4.3.5
+230 silly lockFile 88cb2229-glob-4-3-5 glob@4.3.5
+231 silly lockFile 85d3ad16-glob-4-3-5 glob@~4.3.5
+232 silly lockFile 85d3ad16-glob-4-3-5 glob@~4.3.5
+233 http 404 https://registry.npmjs.org/lodash-compat/3.0.0
+234 silly registry.get cb [ 404,
+234 silly registry.get   { date: 'Tue, 20 Jan 2015 14:51:04 GMT',
+234 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+234 silly registry.get     'content-type': 'application/json',
+234 silly registry.get     'cache-control': 'max-age=0',
+234 silly registry.get     'content-length': '52',
+234 silly registry.get     'accept-ranges': 'bytes',
+234 silly registry.get     via: '1.1 varnish',
+234 silly registry.get     age: '0',
+234 silly registry.get     'x-served-by': 'cache-ams4134-AMS',
+234 silly registry.get     'x-cache': 'MISS',
+234 silly registry.get     'x-cache-hits': '0',
+234 silly registry.get     'x-timer': 'S1421765464.064276,VS0,VE90',
+234 silly registry.get     'keep-alive': 'timeout=10, max=50',
+234 silly registry.get     connection: 'Keep-Alive' } ]
+235 silly lockFile 3c21c534-lodash-compat-3-0-0 lodash-compat@3.0.0
+236 silly lockFile 3c21c534-lodash-compat-3-0-0 lodash-compat@3.0.0
+237 verbose about to build /var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/lodash-cli
+238 info /var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/lodash-cli unbuild
+239 info preuninstall lodash-cli@3.0.0
+240 info uninstall lodash-cli@3.0.0
+241 verbose true,/var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules,/var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules unbuild lodash-cli@3.0.0
+242 verbose /var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator/node_modules/.bin,[object Object] binRoot
+243 info postuninstall lodash-cli@3.0.0
+244 error 404 'lodash-compat' is not in the npm registry.
+244 error 404 You should bug the author to publish it
+244 error 404
+244 error 404 Note that you can also install from a
+244 error 404 tarball, folder, or http url, or git url.
+245 error System Linux 2.6.32-431.11.2.el6.x86_64
+246 error command "node" "/usr/bin/npm" "install" "git+https://github.com/lodash/lodash-cli.git"
+247 error cwd /var/www/dev/gajus kuizinas/2014 02 02 gajus.com/_blog/post/lodash-v3/documentation-generator
+248 error node -v v0.10.26
+249 error npm -v 1.3.6
+250 error code E404
+251 verbose exit [ 1, true ]

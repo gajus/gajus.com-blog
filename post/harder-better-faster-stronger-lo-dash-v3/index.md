@@ -1,4 +1,8 @@
-[Lo-Dash](https://lodash.com/) is a utility library delivering consistency, customization, performance & extras. It is also one the most dependent upon NPM package.[^https://www.npmjs.com/browse/depended] Version 3 of this library is advertised to be getting a significant performance boost[^https://twitter.com/jdalton/status/541416821622964224][^https://github.com/lodash/lodash/wiki/Changelog#notable-changes] and a whole lot of of new features[^https://github.com/lodash/lodash/wiki/Changelog].
+[Lo-Dash](https://lodash.com/) is a utility library delivering consistency, customization, performance & extras. It is also one the most dependent upon NPM package.[^https://www.npmjs.com/browse/depended] Version 3 of this library is advertised to be getting a significant performance boost[^https://twitter.com/jdalton/status/541416821622964224][^https://github.com/lodash/lodash/wiki/Changelog#notable-changes] and a whole lot of [new features](#added-methods)[^https://github.com/lodash/lodash/wiki/Changelog].
+
+## Breaking Changes
+
+This post focuses on the new features. For breaking changes, refer to the [changelog](https://github.com/lodash/lodash/wiki/Changelog).
 
 ## Download
 
@@ -15,7 +19,7 @@ For testing purposes, fork [jsfiddle](http://jsfiddle.net/gajus/gjxa4yga/).
 ## Performance Improvements
 
 * Improved overall performance 25-45%
-* Method chaining supports lazy evaluation
+* Method chaining supports [lazy evaluation](#lazy-evaluation)
 * Methods with support for [shortcut fusion](#shortcut-fusion):
     * _.drop
     * _.dropRight
@@ -59,9 +63,17 @@ For testing purposes, fork [jsfiddle](http://jsfiddle.net/gajus/gjxa4yga/).
     * _.without
     * _.zip
 
+## Custom Builds
+
+The official [changelog](https://github.com/lodash/lodash-cli/wiki/Changelog) have not been updated. Until that day, I have summarized the findings[^https://github.com/lodash/grunt-lodash/issues/15]:
+
+* Allows `lodash modularize exports=es6` builds.
+* Dropped support for `underscore` builds.
+* Has singular category names like "array" instead of "arrays".
+
 ## ES6
 
-There is a [ES6 branch](https://github.com/lodash/lodash/tree/es6) of Lo-Dash v3. It is using [ES6 modules](http://jsmodules.io/), Set & WeakMap, supports cloning typed arrays, & aligns many methods to ES6.[^https://twitter.com/jdalton/status/541379703169220608]
+There is a [ES6 branch](https://github.com/lodash/lodash/tree/es6) of Lo-Dash v3. It is using [ES6 modules](http://jsmodules.io/), Set & WeakMap, supports cloning typed arrays & aligns many methods to ES6.[^https://twitter.com/jdalton/status/541379703169220608]
 
 ## io.js
 
@@ -70,16 +82,6 @@ Lo-Dash is [tested](https://travis-ci.org/lodash/lodash) and works with io.js.[^
 ## Lazy Evaluation
 
 In contrast to [eager evaluation](http://en.wikipedia.org/wiki/Eager_evaluation), lazy evaluation is an evaluation strategy which delays the evaluation of an expression until it is needed[^http://en.wikipedia.org/wiki/Lazy_evaluation]. Lo-Dash is using [lazy evaluation](http://en.wikipedia.org/wiki/Lazy_evaluation) to optimize the number of cycles needed to perform an operation. When result set sorting is not important and only a subset of the data is needed, this will result in a smaller memory footprint and smaller number of cycles.
-
-<figure class="image">
-    <img src="./lodash-naive.gif" style="width: 400px">
-    <figcaption>Illustration of filtering a dataset using eager evaluation.</figcaption>
-</figure>
-
-<figure class="image">
-    <img src="./lodash-lazy-evaluation.gif" style="width: 400px">
-    <figcaption>Illustration of filtering a dataset using lazy evaluation.</figcaption>
-</figure>
 
 ### Example
 
@@ -96,6 +98,8 @@ You have a collection of 100,000 products. Each product is described using a pri
 ### Shortcut Fusion
 
 Lazy evaluation uses [pipeline](http://en.wikipedia.org/wiki/Pipeline_%28computing%29) to process the intermediate data. Performing operation in a pipeline gets away without creating an array to store the intermediate results. Accessing the array once reduces the overhead, esp. when the data source is large and accessing memory is expensive.
+
+This does not affect Lo-Dash API. However, it is useful to know that your clunky array is handled in a resource efficient manner.
 
 <iframe width="100%" height="300" src="http://jsfiddle.net/gajus/4hz0x8py/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
