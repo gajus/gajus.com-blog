@@ -1,25 +1,23 @@
-[Lo-Dash](https://lodash.com/) is a utility library delivering consistency, customization, performance & extras. It is also one the most dependent upon NPM package.[^https://www.npmjs.com/browse/depended] Version 3 of this library is advertised to be getting a significant performance boost[^https://twitter.com/jdalton/status/541416821622964224][^https://github.com/lodash/lodash/wiki/Changelog#notable-changes] and a whole lot of [new features](#added-methods)[^https://github.com/lodash/lodash/wiki/Changelog].
-
-## Breaking Changes
-
-This post focuses on the new features. For breaking changes, refer to the [changelog](https://github.com/lodash/lodash/wiki/Changelog).
+[Lo-Dash](https://lodash.com/) is a utility library delivering consistency, customization, performance & extras. It is also one the most dependent upon NPM packages.[^https://www.npmjs.com/browse/depended] After a complete overhaul (over 800 commits since it has been bumped to v3.0.0-pre[^https://github.com/lodash/lodash/commit/1c770a3c66ef317eb6162fa121f6a46c3226d67f]), version 3 boosts [increased performance](#performance-improvements) and a whole lot of [new features](#added-methods).
 
 ## Download
 
-At the time of writing this, the latest NPM package is [2.4.1](https://www.npmjs.com/package/lodash).
-
-To download the latest version from the [GitHub repository](https://github.com/lodash/lodash):
+The latest NPM package is [2.4.1](https://www.npmjs.com/package/lodash) (2015-01-20). There is no date for the 3.0.0 release. In the mean time, you can download the latest version (3.0.0-pre) from the [GitHub repository](https://github.com/lodash/lodash):
 
 ```bash
 npm install git+https://github.com/lodash/lodash.git --save
 ```
 
-For testing purposes, fork [jsfiddle](http://jsfiddle.net/gajus/gjxa4yga/).
+For testing purposes, make a fork of [jsfiddle](http://jsfiddle.net/gajus/gjxa4yga/) that is using the latest build from GitHub.
+
+## Breaking Changes
+
+This post focuses on the new features. For breaking changes, refer to the [changelog](https://github.com/lodash/lodash/wiki/Changelog).
 
 ## Performance Improvements
 
-* Improved overall performance 25-45%
-* Method chaining supports [lazy evaluation](#lazy-evaluation)
+* Improved overall performance 25-45%.[^https://github.com/lodash/lodash/wiki/Changelog]
+* Method chaining supports [lazy evaluation](#lazy-evaluation).
 * Methods with support for [shortcut fusion](#shortcut-fusion):
     * _.drop
     * _.dropRight
@@ -208,55 +206,4 @@ Lazy evaluation is not a new concept in JavaScript. [lazy.js](http://danieltao.c
 
 ## Summary
 
-Version 3 is the biggest update to Lo-Dash ever][^https://github.com/lodash/lodash/wiki/Changelog. With ever increasing user base, modular code base, and cross-browser compatibility, Lo-Dash is the go-to utility library for years to come.
-
-<!--
-
-
-– https://github.com/lodash/lodash
-
-<blockquote class="twitter-tweet" lang="en"><p>For you speed freaks, Lo-Dash v3 is up to roughly 40% faster than 2.4.1 with support for deferred &amp; lazy evaluation.</p>&mdash; John-David Dalton (@jdalton) <a href="https://twitter.com/jdalton/status/541416821622964224">December 7, 2014</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-## Reduced Size
-
-https://twitter.com/jdalton/status/525858579429867520
-
-<code data-gist-id="3827c94d9768785e138c"></code>
-
-In the above example
-
-
-
-When put put
-
-## Few Dependencies
-
-https://twitter.com/jdalton/status/541376542631145472
-
-## io.js
-
-https://twitter.com/jdalton/status/555302574585155585
-
-Lo-Dash works io.js https://travis-ci.org/lodash/lodash
-
-## Dependencies
-
-https://twitter.com/jdalton/status/554682000632606721
-
-## ES6
-
-https://twitter.com/jdalton/status/541379703169220608
-
-## WeakMaps
-
-https://twitter.com/jdalton/status/541362577050054656
-
-## Video
-
-https://twitter.com/jdalton/status/543216870384365568
-
-## Lazy.js
-
-https://github.com/dtao/lazy.js
--->
+Version 3 is the biggest update to Lo-Dash ever[^https://github.com/lodash/lodash/wiki/Changelog]. With ever increasing user base, modular code base, and cross-browser compatibility, Lo-Dash is the go-to utility library for years to come. With that in mind, there is an going competition with [lazy.js](https://github.com/dtao/lazy.js) and [undescore.js](http://underscorejs.org/), both of which are in active development.
