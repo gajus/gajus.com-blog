@@ -70,12 +70,16 @@ Promise
         })
     })
     .each(function (method) {
-        var comments = commentParser(method.body)[0],
+        var comments,
             example,
             params,
             returns,
+            body = method.body,
             group = method.name.split('/')[0],
             name = method.name.split('/')[1];
+
+        comments = commentParser(body);
+        comments = comments[comments.length - 1];
 
         if (lastGroup !== group) {
             docs += '## ' + group + '\n\n';

@@ -64,7 +64,29 @@ _.capitalize('fred');
 
 https://raw.githubusercontent.com/lodash/lodash/es6/string/deburr.js
 
-Used to match latin-1 supplementary letters (excluding mathematical operators).
+Deburrs `string` by converting latin-1 supplementary letters to basic latin letters.
+
+See [Wikipedia](http://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)#Character_table)
+
+for more details.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `string` | `string` | The string to deburr.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `string` | the deburred string.|
+
+```js
+_.deburr('déjà vu');
+// => 'deja vu'
+```
 
 ### endsWith
 
@@ -102,11 +124,27 @@ _.endsWith('abc', 'b', 2);
 
 https://raw.githubusercontent.com/lodash/lodash/es6/string/escapeRegExp.js
 
-Used to match `RegExp` special characters.
+Escapes the `RegExp` special characters "\", "^", "$", ".", "|", "?", "*",
 
-See this [article on `RegExp` characters](http://www.regular-expressions.info/characters.html#special)
+"+", "(", ")", "[", "]", "{" and "}" in `string`.
 
-for more details.
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `string` | `string` | The string to escape.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `string` | the escaped string.|
+
+```js
+_.escapeRegExp('[lodash](https://lodash.com/)');
+// => '\[lodash\]\(https://lodash\.com/\)'
+```
 
 ### kebabCase
 
@@ -146,7 +184,37 @@ _.kebabCase('__foo_bar__');
 
 https://raw.githubusercontent.com/lodash/lodash/es6/string/pad.js
 
-Native method references.
+Pads `string` on the left and right sides if it is shorter then the given
+
+padding length. The `chars` string may be truncated if the number of padding
+
+characters can't be evenly divided by the padding length.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `string` | `string` | The string to pad.|
+| `length` | `number` | The padding length.|
+| `chars` | `string` | The string used as padding.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `string` | the padded string.|
+
+```js
+_.pad('abc', 8);
+// => '  abc   '
+
+_.pad('abc', 8, '_-');
+// => '_-abc_-_'
+
+_.pad('abc', 3);
+// => 'abc'
+```
 
 ### padLeft
 
@@ -224,7 +292,32 @@ _.padRight('abc', 3);
 
 https://raw.githubusercontent.com/lodash/lodash/es6/string/repeat.js
 
-Native method references.
+Repeats the given string `n` times.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `string` | `string` | The string to repeat.|
+| `n` | `number` | The number of times to repeat the string.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `string` | the repeated string.|
+
+```js
+_.repeat('*', 3);
+// => '***'
+
+_.repeat('abc', 2);
+// => 'abcabc'
+
+_.repeat('abc', 0);
+// => ''
+```
 
 ### snakeCase
 
@@ -381,13 +474,73 @@ _.trimRight('-_-abc-_-', '_-');
 
 https://raw.githubusercontent.com/lodash/lodash/es6/string/trunc.js
 
-Used as default options for `_.trunc`.
+Truncates `string` if it is longer than the given maximum string length.
+
+The last characters of the truncated string are replaced with the omission
+
+string which defaults to "...".
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `string` | `string` | The string to truncate.|
+| `options` | `Object|number` | The options object or maximum string length.|
+| `options.length` | `number` | The maximum string length.|
+| `options.omission` | `string` | The string to indicate text is omitted.|
+| `options.separator` | `RegExp|string` | The separator pattern to truncate to.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `string` | the truncated string.|
+
+```js
+_.trunc('hi-diddly-ho there, neighborino');
+// => 'hi-diddly-ho there, neighbo...'
+
+_.trunc('hi-diddly-ho there, neighborino', 24);
+// => 'hi-diddly-ho there, n...'
+
+_.trunc('hi-diddly-ho there, neighborino', { 'length': 24, 'separator': ' ' });
+// => 'hi-diddly-ho there,...'
+
+_.trunc('hi-diddly-ho there, neighborino', { 'length': 24, 'separator': /,? +/ });
+//=> 'hi-diddly-ho there...'
+
+_.trunc('hi-diddly-ho there, neighborino', { 'omission': ' [...]' });
+// => 'hi-diddly-ho there, neig [...]'
+```
 
 ### words
 
 https://raw.githubusercontent.com/lodash/lodash/es6/string/words.js
 
-Used to match words to create compound words.
+Splits `string` into an array of its words.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `string` | `string` | The string to inspect.|
+| `pattern` | `RegExp|string` | The pattern to match words.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Array` | the words of `string`.|
+
+```js
+_.words('fred, barney, & pebbles');
+// => ['fred', 'barney', 'pebbles']
+
+_.words('fred, barney, & pebbles', /[^, ]+/g);
+// => ['fred', 'barney', '&', 'pebbles']
+```
 
 ## array
 
@@ -395,7 +548,33 @@ Used to match words to create compound words.
 
 https://raw.githubusercontent.com/lodash/lodash/es6/array/chunk.js
 
-Native method references.
+Creates an array of elements split into groups the length of `size`.
+
+If `collection` can't be split evenly, the final chunk will be the remaining
+
+elements.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `array` | `Array` | The array to process.|
+| `size` | `numer` | The length of each chunk.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Array` | the new array containing chunks.|
+
+```js
+_.chunk(['a', 'b', 'c', 'd'], 2);
+// => [['a', 'b'], ['c', 'd']]
+
+_.chunk(['a', 'b', 'c', 'd'], 3);
+// => [['a', 'b', 'c'], ['d']]
+```
 
 ### dropRight
 
@@ -833,37 +1012,219 @@ _.pluck(_.takeWhile(users, { 'status': 'busy' }), 'user');
 
 https://raw.githubusercontent.com/lodash/lodash/es6/function/ary.js
 
-Used to compose bitmasks for wrapper metadata.
+Creates a function that accepts up to `n` arguments ignoring any
+
+additional arguments.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `func` | `Function` | The function to cap arguments for.|
+| `n` | `number` | The arity cap.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Function` | the new function.|
+
+```js
+_.map(['6', '8', '10'], _.ary(parseInt, 1));
+// => [6, 8, 10]
+```
 
 ### before
 
 https://raw.githubusercontent.com/lodash/lodash/es6/function/before.js
 
-Used as the `TypeError` message for "Functions" methods.
+Creates a function that invokes `func`, with the `this` binding and arguments
+
+of the created function, while it is called less than `n` times. Subsequent
+
+calls to the created function return the result of the last `func` invocation.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `n` | `number` | The number of calls at which `func` is no longer invoked.|
+| `func` | `Function` | The function to restrict.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Function` | the new restricted function.|
+
+```js
+jQuery('#add').on('click', _.before(5, addContactToList));
+// => allows adding up to 4 contacts to the list
+```
 
 ### curryRight
 
 https://raw.githubusercontent.com/lodash/lodash/es6/function/curryRight.js
 
-Used to compose bitmasks for wrapper metadata.
+This method is like `_.curry` except that arguments are applied to `func`
+
+in the manner of `_.partialRight` instead of `_.partial`.
+
+
+
+The `_.curryRight.placeholder` value, which defaults to `_` in monolithic
+
+builds, may be used as a placeholder for provided arguments.
+
+
+
+**Note:** This method does not set the `length` property of curried functions.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `func` | `Function` | The function to curry.|
+| `arity` | `number` | The arity of `func`.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Function` | the new curried function.|
+
+```js
+var abc = function(a, b, c) {
+  return [a, b, c];
+};
+
+var curried = _.curryRight(abc);
+
+curried(3)(2)(1);
+// => [1, 2, 3]
+
+curried(2, 3)(1);
+// => [1, 2, 3]
+
+curried(1, 2, 3);
+// => [1, 2, 3]
+
+// using placeholders
+curried(3)(1, _)(2);
+// => [1, 2, 3]
+```
 
 ### flow
 
 https://raw.githubusercontent.com/lodash/lodash/es6/function/flow.js
 
-Used as the `TypeError` message for "Functions" methods.
+Creates a function that returns the result of invoking the provided
+
+functions with the `this` binding of the created function, where each
+
+successive invocation is supplied the return value of the previous.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `funcs` | `...Function` | Functions to invoke.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Function` | the new function.|
+
+```js
+function add(x, y) {
+  return x + y;
+}
+
+function square(n) {
+  return n * n;
+}
+
+var addSquare = _.flow(add, square);
+addSquare(1, 2);
+// => 9
+```
 
 ### negate
 
 https://raw.githubusercontent.com/lodash/lodash/es6/function/negate.js
 
-Used as the `TypeError` message for "Functions" methods.
+Creates a function that negates the result of the predicate `func`. The
+
+`func` predicate is invoked with the `this` binding and arguments of the
+
+created function.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `predicate` | `Function` | The predicate to negate.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Function` | the new function.|
+
+```js
+function isEven(n) {
+  return n % 2 == 0;
+}
+
+_.filter([1, 2, 3, 4, 5, 6], _.negate(isEven));
+// => [1, 3, 5]
+```
 
 ### rearg
 
 https://raw.githubusercontent.com/lodash/lodash/es6/function/rearg.js
 
-Used to compose bitmasks for wrapper metadata.
+Creates a function that invokes `func` with arguments arranged according
+
+to the specified indexes where the argument value at the first index is
+
+provided as the first argument, the argument value at the second index is
+
+provided as the second argument, and so on.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `func` | `Function` | The function to rearrange arguments for.|
+| `indexes` | `...(number|number[])` | The arranged argument indexes,
+ specified as individual indexes or arrays of indexes.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Function` | the new function.|
+
+```js
+var rearged = _.rearg(function(a, b, c) {
+  return [a, b, c];
+}, 2, 0, 1);
+
+rearged('b', 'c', 'a')
+// => ['a', 'b', 'c']
+
+var map = _.rearg(_.map, [1, 0]);
+map(function(n) { return n * 3; }, [1, 2, 3]);
+// => [3, 6, 9]
+```
 
 ## lang
 
@@ -871,25 +1232,143 @@ Used to compose bitmasks for wrapper metadata.
 
 https://raw.githubusercontent.com/lodash/lodash/es6/lang/isError.js
 
-`Object#toString` result references.
+Checks if `value` is an `Error`, `EvalError`, `RangeError`, `ReferenceError`,
+
+`SyntaxError`, `TypeError`, or `URIError` object.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `value` | `*` | The value to check.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `boolean` | `true` if `value` is an error object, else `false`.|
+
+```js
+_.isError(new Error);
+// => true
+
+_.isError(Error);
+// => false
+```
 
 ### isMatch
 
 https://raw.githubusercontent.com/lodash/lodash/es6/lang/isMatch.js
 
-Used for native method references.
+Performs a deep comparison between `object` and `source` to determine if
+
+`object` contains equivalent property values. If `customizer` is provided
+
+it is invoked to compare values. If `customizer` returns `undefined`
+
+comparisons are handled by the method instead. The `customizer` is bound
+
+to `thisArg` and invoked with three arguments; (value, other, index|key).
+
+
+
+**Note:** This method supports comparing properties of arrays, booleans,
+
+`Date` objects, numbers, `Object` objects, regexes, and strings. Functions
+
+and DOM nodes are **not** supported. Provide a customizer function to extend
+
+support for comparing other values.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `source` | `Object` | The object to inspect.|
+| `source` | `Object` | The object of property values to match.|
+| `customizer` | `Function` | The function to customize comparing values.|
+| `thisArg` | `*` | The `this` binding of `customizer`.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `boolean` | `true` if `object` is a match, else `false`.|
+
+```js
+var object = { 'user': 'fred', 'age': 40 };
+
+_.isMatch(object, { 'age': 40 });
+// => true
+
+_.isMatch(object, { 'age': 36 });
+// => false
+
+// using a customizer callback
+var object = { 'greeting': 'hello' };
+var source = { 'greeting': 'hi' };
+
+_.isMatch(object, source, function(value, other) {
+  return _.every([value, other], RegExp.prototype.test, /^h(?:i|ello)$/) || undefined;
+});
+// => true
+```
 
 ### isNative
 
 https://raw.githubusercontent.com/lodash/lodash/es6/lang/isNative.js
 
-`Object#toString` result references.
+Checks if `value` is a native function.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `value` | `*` | The value to check.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `boolean` | `true` if `value` is a native function, else `false`.|
+
+```js
+_.isNative(Array.prototype.push);
+// => true
+
+_.isNative(_);
+// => false
+```
 
 ### isTypedArray
 
 https://raw.githubusercontent.com/lodash/lodash/es6/lang/isTypedArray.js
 
-`Object#toString` result references.
+Checks if `value` is classified as a typed array.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `value` | `*` | The value to check.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `boolean` | `true` if `value` is correctly classified, else `false`.|
+
+```js
+_.isTypedArray(new Uint8Array);
+// => true
+
+_.isTypedArray([]);
+// => false
+```
 
 ### toPlainObject
 
@@ -1137,7 +1616,36 @@ _.map(_.sortByAll(users, ['user', 'age']), _.values);
 
 https://raw.githubusercontent.com/lodash/lodash/es6/object/keysIn.js
 
-Used for native method references.
+Creates an array of the own and inherited enumerable property names of `object`.
+
+
+
+**Note:** Non-object values are coerced to objects.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `object` | `Object` | The object to inspect.|
+
+
+#### Returns
+
+| Type | Description |
+| --- | --- |
+| `Array` | the array of property names.|
+
+```js
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+
+Foo.prototype.c = 3;
+
+_.keysIn(new Foo);
+// => ['a', 'b', 'c'] (iteration order is not guaranteed)
+```
 
 ### valuesIn
 
