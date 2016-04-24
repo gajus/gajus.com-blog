@@ -1,22 +1,46 @@
 [Lo-Dash](https://lodash.com/) is a utility library delivering consistency, customization, performance & extras. It is also one the most dependent upon NPM packages.[^https://www.npmjs.com/browse/depended] After a complete overhaul (over 800 commits since it has been bumped to v3.0.0-pre[^https://github.com/lodash/lodash/commit/1c770a3c66ef317eb6162fa121f6a46c3226d67f]), version 3 boosts [increased performance](#performance-improvements) and a whole lot of [new features](#added-methods).
 
+[3.0.0 version release notes](https://github.com/lodash/lodash/releases/tag/3.0.0) summarize the changes.
+
+## Release Date
+
+Lo-Dash 3.0.0 ([lodash](#name)) has been released on 2015-01-26.[^https://twitter.com/jdalton/status/559771281705287680]
+
 ## Download
 
-The latest NPM package is [2.4.1](https://www.npmjs.com/package/lodash) (2015-01-20). There is no date for the 3.0.0 release. In the mean time, you can download the latest version (3.0.0-pre) from the [GitHub repository](https://github.com/lodash/lodash):
+Version 3.0.0 (2015-01-26) is available from the [NPM](https://www.npmjs.com/package/lodash):
 
 ```bash
-npm install git+https://github.com/lodash/lodash.git --save
+npm install lodash
 ```
 
-For testing purposes, make a fork of [jsfiddle](http://jsfiddle.net/gajus/gjxa4yga/) that is using the latest build from GitHub.
+### Module Formats
+
+lodash is also available in a variety of other builds & module formats.
+
+* npm packages for [modern](https://www.npmjs.com/package/lodash), [compatibility](https://www.npmjs.com/package/lodash-compat), & [per method](https://www.npmjs.com/browse/keyword/lodash-modularized) builds
+* AMD modules for [modern](https://github.com/lodash/lodash/tree/3.0.0-amd) & [compatibility](https://github.com/lodash/lodash-compat/tree/3.0.0-amd) builds
+* ES modules for the [modern](https://github.com/lodash/lodash/tree/3.0.0-es) build
+
+## Name
+
+With version 3.0.0, "Lo-Dash" has been renamed to "lodash".[^https://github.com/lodash/lodash/commit/ae98b995698ff5432656786b9e622953a3b28669][^https://twitter.com/jdalton/status/559090662209880064]
 
 ## Breaking Changes
 
 This post focuses on the new features. For breaking changes, refer to the [changelog](https://github.com/lodash/lodash/wiki/Changelog).
 
+### Migration
+
+There is a [lodash-migrate](https://www.npmjs.com/package/lodash-migrate) package that assists with migrating code from older lodash versions to the latest release.
+
 ## Performance Improvements
 
-* Improved overall performance 25-45%.[^https://github.com/lodash/lodash/wiki/Changelog]
+> We have improved performance 20-40% overall in v3 by better utilizing the JIT in JavaScript engines, using internal helper functions that avoid optimization disqualifications & increase the likelihood of function inlining.
+>
+> We are using Set & WeakMap for performance gains. This gives all modern browsers a boost & also means lodash will have significantly faster array/function methods in io.js over Node.js because io.js has Set/WeakMap on by default.[^https://github.com/lodash/lodash/releases/tag/3.0.0]
+
+* Improved overall performance 20-40%.[^https://twitter.com/jdalton/status/560110103148257282]
 * Method chaining supports [lazy evaluation](#lazy-evaluation).
 * Methods with support for [shortcut fusion](#shortcut-fusion):
     * _.drop
@@ -63,15 +87,13 @@ This post focuses on the new features. For breaking changes, refer to the [chang
 
 ## Custom Builds
 
-The official [changelog](https://github.com/lodash/lodash-cli/wiki/Changelog) have not been updated. Until that day, I have summarized the findings[^https://github.com/lodash/grunt-lodash/issues/15]:
+<del>The official [changelog](https://github.com/lodash/lodash-cli/wiki/Changelog) have not been updated. Until that day, I have summarized the findings[^https://github.com/lodash/grunt-lodash/issues/15].</del>
 
-* Allows `lodash modularize exports=es6` builds.
-* Dropped support for `underscore` builds.
-* Has singular category names like "array" instead of "arrays".
+Refer to the official [changelog](https://github.com/lodash/lodash-cli/wiki/Changelog).
 
 ## ES6
 
-There is a [ES6 branch](https://github.com/lodash/lodash/tree/es6) of Lo-Dash v3. It is using [ES6 modules](http://jsmodules.io/), Set & WeakMap, supports cloning typed arrays & aligns many methods to ES6.[^https://twitter.com/jdalton/status/541379703169220608]
+There is a [ES6 branch](https://github.com/lodash/lodash/tree/es) of Lo-Dash v3. It is using [ES6 modules](http://jsmodules.io/), Set & WeakMap, supports cloning typed arrays & aligns many methods to ES6.[^https://twitter.com/jdalton/status/541379703169220608]
 
 ## io.js
 
@@ -115,94 +137,94 @@ Lazy evaluation is not a new concept in JavaScript. [lazy.js](http://danieltao.c
 
 ## Added Methods
 
-47 new methods have been added.[^https://github.com/lodash/lodash/wiki/Changelog#notable-changes] The official documentation has not been released. I have written a [node script](https://github.com/gajus/blog.gajus.com/tree/master/post/lodash-v3/documentation-generator) that pulls each module from the [ES6 branch](https://github.com/lodash/lodash/tree/es6) and parses the comments to [generate documentation](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md).
+47 new methods have been added.[^https://github.com/lodash/lodash/wiki/Changelog#notable-changes] The official documentation has not been released. I have written a [node script](https://github.com/gajus/blog.gajus.com/tree/master/post/lodash-v3/documentation-generator) that pulls each module from the [ES6 branch](https://github.com/lodash/lodash/tree/es) and parses the comments to [generate documentation](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md).
 
 ### String
 
 | Name | Description |
 | --- | --- |
-| [`camelCase`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#camelcase)| Converts `string` to camel case. See [Wikipedia](http://en.wikipedia.org/wiki/CamelCase) for more details. |
-| [`capitalize`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#capitalize)| Capitalizes the first character of `string`. |
-| [`deburr`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#deburr)| Used to match latin-1 supplementary letters (excluding mathematical operators). |
-| [`endsWith`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#endswith)| Checks if `string` ends with the given target string. |
-| [`escapeRegExp`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#escaperegexp)| Used to match `RegExp` special characters. See this [article on `RegExp` characters](http://www.regular-expressions.info/characters.html#special) for more details. |
-| [`kebabCase`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#kebabcase)| Converts `string` to kebab case (a.k.a. spinal case). See [Wikipedia](http://en.wikipedia.org/wiki/Letter_case#Computers) for more details. |
-| [`pad`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#pad)| Native method references. |
-| [`padLeft`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#padleft)| Pads `string` on the left side if it is shorter then the given padding length. The `chars` string may be truncated if the number of padding characters exceeds the padding length. |
-| [`padRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#padright)| Pads `string` on the right side if it is shorter then the given padding length. The `chars` string may be truncated if the number of padding characters exceeds the padding length. |
-| [`repeat`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#repeat)| Native method references. |
-| [`snakeCase`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#snakecase)| Converts `string` to snake case. See [Wikipedia](http://en.wikipedia.org/wiki/Snake_case) for more details. |
-| [`startsWith`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#startswith)| Checks if `string` starts with the given target string. |
-| [`trim`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#trim)| Removes leading and trailing whitespace or specified characters from `string`. |
-| [`trimLeft`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#trimleft)| Removes leading whitespace or specified characters from `string`. |
-| [`trimRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#trimright)| Removes trailing whitespace or specified characters from `string`. |
-| [`trunc`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#trunc)| Used as default options for `_.trunc`. |
-| [`words`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#words)| Used to match words to create compound words. |
+| [`camelCase`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#camelcase)| Converts `string` to camel case. See [Wikipedia](http://en.wikipedia.org/wiki/CamelCase) for more details. |
+| [`capitalize`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#capitalize)| Capitalizes the first character of `string`. |
+| [`deburr`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#deburr)| Used to match latin-1 supplementary letters (excluding mathematical operators). |
+| [`endsWith`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#endswith)| Checks if `string` ends with the given target string. |
+| [`escapeRegExp`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#escaperegexp)| Used to match `RegExp` special characters. See this [article on `RegExp` characters](http://www.regular-expressions.info/characters.html#special) for more details. |
+| [`kebabCase`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#kebabcase)| Converts `string` to kebab case (a.k.a. spinal case). See [Wikipedia](http://en.wikipedia.org/wiki/Letter_case#Computers) for more details. |
+| [`pad`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#pad)| Native method references. |
+| [`padLeft`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#padleft)| Pads `string` on the left side if it is shorter then the given padding length. The `chars` string may be truncated if the number of padding characters exceeds the padding length. |
+| [`padRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#padright)| Pads `string` on the right side if it is shorter then the given padding length. The `chars` string may be truncated if the number of padding characters exceeds the padding length. |
+| [`repeat`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#repeat)| Native method references. |
+| [`snakeCase`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#snakecase)| Converts `string` to snake case. See [Wikipedia](http://en.wikipedia.org/wiki/Snake_case) for more details. |
+| [`startsWith`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#startswith)| Checks if `string` starts with the given target string. |
+| [`trim`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#trim)| Removes leading and trailing whitespace or specified characters from `string`. |
+| [`trimLeft`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#trimleft)| Removes leading whitespace or specified characters from `string`. |
+| [`trimRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#trimright)| Removes trailing whitespace or specified characters from `string`. |
+| [`trunc`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#trunc)| Used as default options for `_.trunc`. |
+| [`words`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#words)| Used to match words to create compound words. |
 
 ### Array
 
 | Name | Description |
 | --- | --- |
-| [`chunk`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#chunk)| Native method references. |
-| [`dropRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#dropright)| Creates a slice of `array` with `n` elements dropped from the end. |
-| [`dropRightWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#droprightwhile)| Creates a slice of `array` excluding elements dropped from the end. Elements are dropped until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
-| [`dropWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#dropwhile)| Creates a slice of `array` excluding elements dropped from the beginning. Elements are dropped until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
-| [`flattenDeep`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#flattendeep)| Recursively flattens a nested array. |
-| [`pullAt`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#pullat)| Removes elements from `array` corresponding to the given indexes and returns an array of the removed elements. Indexes may be specified as an array of indexes or as individual arguments.  **Note:** Unlike `_.at`, this method mutates `array`. |
-| [`slice`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#slice)| Creates a slice of `array` from `start` up to, but not including, `end`.  **Note:** This function is used instead of `Array#slice` to support node lists in IE < 9 and to ensure dense arrays are returned. |
-| [`sortedLastIndex`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#sortedlastindex)| This method is like `_.sortedIndex` except that it returns the highest index at which `value` should be inserted into `array` in order to maintain its sort order. |
-| [`takeRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#takeright)| Creates a slice of `array` with `n` elements taken from the end. |
-| [`takeRightWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#takerightwhile)| Creates a slice of `array` with elements taken from the end. Elements are taken until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
-| [`takeWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#takewhile)| Creates a slice of `array` with elements taken from the beginning. Elements are taken until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
+| [`chunk`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#chunk)| Native method references. |
+| [`dropRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#dropright)| Creates a slice of `array` with `n` elements dropped from the end. |
+| [`dropRightWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#droprightwhile)| Creates a slice of `array` excluding elements dropped from the end. Elements are dropped until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
+| [`dropWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#dropwhile)| Creates a slice of `array` excluding elements dropped from the beginning. Elements are dropped until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
+| [`flattenDeep`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#flattendeep)| Recursively flattens a nested array. |
+| [`pullAt`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#pullat)| Removes elements from `array` corresponding to the given indexes and returns an array of the removed elements. Indexes may be specified as an array of indexes or as individual arguments.  **Note:** Unlike `_.at`, this method mutates `array`. |
+| [`slice`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#slice)| Creates a slice of `array` from `start` up to, but not including, `end`.  **Note:** This function is used instead of `Array#slice` to support node lists in IE < 9 and to ensure dense arrays are returned. |
+| [`sortedLastIndex`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#sortedlastindex)| This method is like `_.sortedIndex` except that it returns the highest index at which `value` should be inserted into `array` in order to maintain its sort order. |
+| [`takeRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#takeright)| Creates a slice of `array` with `n` elements taken from the end. |
+| [`takeRightWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#takerightwhile)| Creates a slice of `array` with elements taken from the end. Elements are taken until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
+| [`takeWhile`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#takewhile)| Creates a slice of `array` with elements taken from the beginning. Elements are taken until `predicate` returns falsey. The predicate is bound to `thisArg` and invoked with three arguments; (value, index, array). |
 
 ### Function
 
 | Name | Description |
 | --- | --- |
-| [`ary`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#ary)| Used to compose bitmasks for wrapper metadata. |
-| [`before`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#before)| Used as the `TypeError` message for "Functions" methods. |
-| [`curryRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#curryright)| Used to compose bitmasks for wrapper metadata. |
-| [`flow`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#flow)| Used as the `TypeError` message for "Functions" methods. |
-| [`negate`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#negate)| Used as the `TypeError` message for "Functions" methods. |
-| [`rearg`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#rearg)| Used to compose bitmasks for wrapper metadata. |
+| [`ary`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#ary)| Used to compose bitmasks for wrapper metadata. |
+| [`before`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#before)| Used as the `TypeError` message for "Functions" methods. |
+| [`curryRight`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#curryright)| Used to compose bitmasks for wrapper metadata. |
+| [`flow`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#flow)| Used as the `TypeError` message for "Functions" methods. |
+| [`negate`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#negate)| Used as the `TypeError` message for "Functions" methods. |
+| [`rearg`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#rearg)| Used to compose bitmasks for wrapper metadata. |
 
 ### Lang
 
 | Name | Description |
 | --- | --- |
-| [`isError`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#iserror)| `Object#toString` result references. |
-| [`isMatch`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#ismatch)| Used for native method references. |
-| [`isNative`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#isnative)| `Object#toString` result references. |
-| [`isTypedArray`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#istypedarray)| `Object#toString` result references. |
-| [`toPlainObject`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#toplainobject)| Converts `value` to a plain object flattening inherited enumerable properties of `value` to own properties of the plain object. |
+| [`isError`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#iserror)| `Object#toString` result references. |
+| [`isMatch`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#ismatch)| Used for native method references. |
+| [`isNative`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#isnative)| `Object#toString` result references. |
+| [`isTypedArray`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#istypedarray)| `Object#toString` result references. |
+| [`toPlainObject`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#toplainobject)| Converts `value` to a plain object flattening inherited enumerable properties of `value` to own properties of the plain object. |
 
 ### Utility
 
 | Name | Description |
 | --- | --- |
-| [`attempt`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#attempt)| Attempts to invoke `func`, returning either the result or the caught error object. |
-| [`matches`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#matches)| Creates a function which performs a deep comparison between a given object and `source`, returning `true` if the given object has equivalent property values, else `false`. |
-| [`propertyOf`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#propertyof)| The inverse of `_.property`; this method creates a function which returns the property value of a given key on `object`. |
+| [`attempt`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#attempt)| Attempts to invoke `func`, returning either the result or the caught error object. |
+| [`matches`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#matches)| Creates a function which performs a deep comparison between a given object and `source`, returning `true` if the given object has equivalent property values, else `false`. |
+| [`propertyOf`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#propertyof)| The inverse of `_.property`; this method creates a function which returns the property value of a given key on `object`. |
 
 ### Collection
 
 | Name | Description |
 | --- | --- |
-| [`partition`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#partition)| Creates an array of elements split into two groups, the first of which contains elements `predicate` returns truthy for, while the second of which contains elements `predicate` returns falsey for. The predicate is bound to `thisArg` and invoked with three arguments; (value, index|key, collection).  |
-| [`sortByAll`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#sortbyall)| This method is like `_.sortBy` except that it sorts by property names instead of an iteratee function. |
+| [`partition`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#partition)| Creates an array of elements split into two groups, the first of which contains elements `predicate` returns truthy for, while the second of which contains elements `predicate` returns falsey for. The predicate is bound to `thisArg` and invoked with three arguments; (value, index|key, collection).  |
+| [`sortByAll`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#sortbyall)| This method is like `_.sortBy` except that it sorts by property names instead of an iteratee function. |
 
 ### Object
 
 | Name | Description |
 | --- | --- |
-| [`keysIn`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#keysin)| Used for native method references. |
-| [`valuesIn`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#valuesin)| Creates an array of the own and inherited enumerable property values of `object`.  **Note:** Non-object values are coerced to objects. |
+| [`keysIn`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#keysin)| Used for native method references. |
+| [`valuesIn`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#valuesin)| Creates an array of the own and inherited enumerable property values of `object`.  **Note:** Non-object values are coerced to objects. |
 
 ### Chain
 
 | Name | Description |
 | --- | --- |
-| [`thru`](https://github.com/gajus/blog.gajus.com/blob/master/post/lodash-v3/documentation.md#thru)| This method is like `_.tap` except that it returns the result of `interceptor`. |
+| [`thru`](https://github.com/gajus/blog.gajus.com/blob/master/post/harder-better-faster-stronger-lo-dash-v3/documentation.md#thru)| This method is like `_.tap` except that it returns the result of `interceptor`. |
 
 ## Summary
 

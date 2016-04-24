@@ -48,15 +48,15 @@ The idea is to ensure that the test really works and can catch an error.
 
 Instead of filling in a real implementation, you can fake it with a dummy value.
 
-<code data-gist-id="563d34d5156de201bdc9"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/p24zdova/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 You know that your implementation isn't ready, but all the specs are showing green. This implies that there is a spec example missing.
 
-<code data-gist-id="3b262d7a41819d8bc26a"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/b55zpsgL/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 You proceed until you've covered just enough test cases to produce a general solution.
 
-<code data-gist-id="ee8fdb2a6340484e0ef6"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/ta61xnko/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 The idea is to gain moment and insight into how the algorithm should behave.
 
@@ -93,7 +93,7 @@ Empty object that does nothing.
 
 * Objects are passed around but never actually used. Usually they are just used to fill parameter lists.[^http://martinfowler.com/articles/mocksArentStubs.html]
 
-<code data-gist-id="dfa125b63e6ddeffed6c"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/eprp2v5z/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 #### Stubs
 
@@ -105,7 +105,7 @@ Method designed just for testing.
 * A stub will never cause a test to fail.[^http://ayende.com/Wiki/Rhino+Mocks+3.5.ashx]
 * Stub is simple fake object. It just makes sure test runs smoothly.[^http://stackoverflow.com/a/3459431/368691]
 
-<code data-gist-id="98316f5154cbcb60d55b"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/va65wsqr/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 #### Mocks
 
@@ -114,13 +114,13 @@ Object designed just for testing.
 * Mock objects are used in mock test cases – they validate that certain methods are called on those objects.[^http://stackoverflow.com/a/1830000/368691]
 * An object on which you set expectations.[^http://stackoverflow.com/a/5180286/368691]
 
-<code data-gist-id="ab5190a2e747906128c4"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/tw2pLkcm/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 ### Example Factory
 
 Method used to instantiate the SUT object with canonical values, overwriting only the properties relevant to the test case.
 
-<code data-gist-id="d75de7f3fdbfd6486d6a"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/ugfp6k0s/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 See https://github.com/petejkim/factory-lady, Object Mother and Test Data Builders.
 
@@ -140,7 +140,7 @@ You might have also heard <dfn>Given, When, Then</dfn> (GWT):
 
 The two are identical. The phrasing of the latter might be easier to comprehend.
 
-<code data-gist-id="e810abf7ab619b71dd9c"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/tbw49r6z/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 As a result, your specs must adhere to the following rules:
 
@@ -160,7 +160,7 @@ This way of organizing a spec is also referred to as "by topic".
 
 The benefit of organizing your spec per feature makes it easier to write.
 
-<code data-gist-id="2a7fd107f897213aee67"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/2f1xvL2g/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 ### Per Fixture
 
@@ -168,7 +168,7 @@ This way or organizing a spec is also referred to as "by example data".
 
 The benefit of organizing your spec per fixture makes the resulting spec more descriptive and easier to read. The additional benefit is because all your examples share the same example data, you need to state it only once (e.g. using <code>beforeEach</code> setup function).
 
-<code data-gist-id="c93f8bac2fe402881916"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/cnda492j/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 ## High and Low Level Spec
 
@@ -178,7 +178,7 @@ BDD project usually starts with writing the outer circle (high level specs) and 
 
 You start with the implementation of the specs that have meaning to the business using hypothetical components (aka. acceptance test):
 
-<code data-gist-id="32a61ea65183c4584682"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/snr8pb4e/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 Acceptance test is a high level spec that describes a scenario from the view of an application user. In contrast to the low level spec, a high level spec does not have an SUT.
 
@@ -192,7 +192,7 @@ The upside of the outside-in development is that you never write code that will 
 
 You start with the basic components that make up the application:
 
-<code data-gist-id="87acb66a7823c2d71c05"></code>
+<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/sotuL6pc/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 * They help to find specific bugs (localization).
 * They are most useful to the developers who maintain the code later.
@@ -200,4 +200,4 @@ You start with the basic components that make up the application:
 
 ## Further Read
 
-This post is a result of reading "Behaviour Driven Development with Javascript by Marco Emrich"[^http://www.amazon.com/Behaviour-Driven-Development-JavaScript-introduction-ebook/dp/B00CYMN3J2] and the subsequent research. Another grate resource, although beyond JavaScript scope, is "BDD in Action: Behavior-driven development for the whole software lifecycle"[^http://www.amazon.com/BDD-Action-Behavior-driven-development-lifecycle/dp/161729165X/].
+This post is a result of reading "Behaviour Driven Development with JavaScript by Marco Emrich"[^http://www.amazon.com/Behaviour-Driven-Development-JavaScript-introduction-ebook/dp/B00CYMN3J2] and the subsequent research. Another grate resource, although beyond JavaScript scope, is "BDD in Action: Behavior-driven development for the whole software lifecycle"[^http://www.amazon.com/BDD-Action-Behavior-driven-development-lifecycle/dp/161729165X/].
