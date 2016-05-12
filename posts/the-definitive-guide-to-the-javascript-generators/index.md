@@ -314,6 +314,10 @@ Multiple asynchronous operations one after another produce nesting that is hard 
 
 ```js
 // tonic ^6.0.0
+const foo = (name, callback) => {
+    callback(name);
+};
+
 foo('a', (a) => {
     foo('b', (b) => {
         foo('c', (c) => {
@@ -322,7 +326,9 @@ foo('a', (a) => {
     });
 });
  
-// a b c
+// a
+// b
+// c
 ```
 
 There are several solutions to address the issue, such as [using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or generators. Using generators, the above code can be rewritten as such:
