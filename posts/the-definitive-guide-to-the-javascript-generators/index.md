@@ -303,9 +303,9 @@ In JavaScript, IO operations are generally done as asynchronous operations that 
 
 ```js
 // tonic ^6.0.0
-const foo = (parameters, callback) => {
+const foo = (name, callback) => {
     setTimeout(() => {
-        callback(parameters);
+        callback(name);
     }, 100);
 };
 ```
@@ -315,7 +315,9 @@ Multiple asynchronous operations one after another produce nesting that is hard 
 ```js
 // tonic ^6.0.0
 const foo = (name, callback) => {
-    callback(name);
+    setTimeout(() => {
+        callback(name);
+    }, 100);
 };
 
 foo('a', (a) => {
@@ -395,9 +397,9 @@ The end result is a script without too many levels of nested callbacks and achie
 
 ```js
 // tonic ^6.0.0
-const foo = (parameters, callback) => {
+const foo = (name, callback) => {
     setTimeout(() => {
-        callback(parameters);
+        callback(name);
     }, 100);
 };
  
