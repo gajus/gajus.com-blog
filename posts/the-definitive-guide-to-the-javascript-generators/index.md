@@ -7,7 +7,7 @@ There are many articles [^http://odetocode.com/blogs/scott/archive/2014/02/17/th
 const generatorFunction = function* () {};
 const iterator = generatorFunction();
 
-console.log(iterator[Symbol.iterator] === 'function');
+console.log(iterator[Symbol.iterator]);
 
 // function [Symbol.iterator]()
 ```
