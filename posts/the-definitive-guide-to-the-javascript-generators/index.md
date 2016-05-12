@@ -2,16 +2,22 @@ There are many articles [^http://odetocode.com/blogs/scott/archive/2014/02/17/th
 
 ## Building an Iterator from a Generator
 
-```js 
+```js
+// tonic ^6.0.0
 const generatorFunction = function* () {};
 const iterator = generatorFunction();
+
+console.log(iterator[Symbol.iterator] === 'function');
+
+// function [Symbol.iterator]()
 ```
 
 `generatorFunction` variable is assigned a <em>generator function</em>. Generator functions are denoted using `function*` syntax.
 
 Calling a generator function returns an <em>iterator object</em>.
 
-```js 
+```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     // This does not get executed.
     console.log('a');
@@ -29,7 +35,8 @@ console.log(2);
 
 `next()` method is used to advance the execution of the generator body:
 
-```js 
+```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     console.log('a');
 };
@@ -49,6 +56,7 @@ console.log(3);
 `next()` method returns an object that indicates the progress of the iteration:
 
 ```js
+// tonic ^6.0.0
 const generatorFunction = function* () {};
 const iterator = generatorFunction();
  
@@ -62,6 +70,7 @@ console.log(iterator.next());
 The generator function is expected to utilize `yield` keyword. `yield` suspends execution of a generator and returns control to the iterator.
 
 ```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     yield;
 };
@@ -76,7 +85,8 @@ console.log(iterator.next());
 
 When suspended, the generator does not block the event queue:
 
-```js 
+```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     var i = 0;
     while (true) {
@@ -105,7 +115,8 @@ console.log(iterator.next());
 
 `yield` keyword can pass a value back to the iterator:
 
-```js 
+```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     yield 'foo';
 };
@@ -124,6 +135,7 @@ Any data type can be yielded, including functions, numbers, arrays and objects.
 When the generator is advanced to the completion, the `return` value is returned.
 
 ```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     yield 'foo';
     return 'bar';
@@ -143,6 +155,7 @@ console.log(iterator.next());
 `yield` keyword can receive a value back from the iterator:
 
 ```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     console.log(yield);
 };
@@ -171,6 +184,7 @@ The best way to understand the execution flow of the generators is to play aroun
 The iterator object returned from the generator is compliant with the ["iterable"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/iterable) protocol. Therefore, you can use the [`for...of` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) to loop through the generator.
 
 ```js
+// tonic ^6.0.0
 let index;
  
 const generatorFunction = function* () {
@@ -200,6 +214,7 @@ for (index of iterator) {
 The `yield*`operator delegates to another generator.
 
 ```js
+// tonic ^6.0.0
 let index;
  
 const foo = function* () {
@@ -228,6 +243,7 @@ for (index of foo()) {
 Delegating a generator to another generator is in effect the same as importing the body of the target generator to the destination generator. For illustration purposes only, the above code unfolds to the following:
 
 ```js
+// tonic ^6.0.0
 let index;
  
 const foo = function* () {
@@ -249,7 +265,8 @@ for (index of foo()) {
 
 In addition to advancing the generator instance using `next()`, you can `throw()`. Whatever is thrown will propagate back up into the code of the generator, i.e. it can be handled either within or outside the generator instance:
 
-```js 
+```js
+// tonic ^6.0.0
 const generatorFunction = function* () {
     while (true) {
         try {
@@ -285,6 +302,7 @@ Any data type can be thrown, including functions, numbers, arrays and objects.
 In JavaScript, IO operations are generally done as asynchronous operations that require a callback. For the purpose of illustration, I am going to use a made-up service `foo`:
 
 ```js
+// tonic ^6.0.0
 const foo = (parameters, callback) => {
     setTimeout(() => {
         callback(parameters);
@@ -295,6 +313,7 @@ const foo = (parameters, callback) => {
 Multiple asynchronous operations one after another produce nesting that is hard to read.
 
 ```js
+// tonic ^6.0.0
 foo('a', (a) => {
     foo('b', (b) => {
         foo('c', (c) => {
@@ -309,6 +328,7 @@ foo('a', (a) => {
 There are several solutions to address the issue, such as [using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or generators. Using generators, the above code can be rewritten as such:
 
 ```js
+// tonic ^6.0.0
 function* () {
     const a = yield curry(foo, 'a');
     const b = yield curry(foo, 'b');
@@ -321,6 +341,7 @@ function* () {
 To execute the generator, we need a controller. The controller needs to fulfill the asynchronous requests and return the result back.
 
 ```js
+// tonic ^6.0.0
 /**
  * Initiates a generator and iterates through each function supplied
  * via the yield operator.
@@ -347,6 +368,7 @@ const controller = (generator) => {
 The last step is to curry the asynchronous functions into functions that take a single parameter (the callback). This allows to iterate the generator instance knowing that `yield` expression is always expecting a singe parameter, the callback that is used to further advance the iteration.
 
 ```js
+// tonic ^6.0.0
 /**
  * Transforms a function that takes multiple arguments into a
  * function that takes just the last argument of the original function.
@@ -368,6 +390,7 @@ const curry = (method) => {
 The end result is a script without too many levels of nested callbacks and achieved line independence (the code for one operation is no longer tied to the ones that come after it).
 
 ```js
+// tonic ^6.0.0
 const foo = (parameters, callback) => {
     setTimeout(() => {
         callback(parameters);
@@ -416,6 +439,7 @@ controller(function* () {
 It is common to handle the error handling for each individual asynchronous operation, e.g.
 
 ```js
+// tonic ^6.0.0
 foo('a', (a) => {
     if (a.error) {
         throw new Error(a.error);
@@ -440,6 +464,7 @@ foo('a', (a) => {
 In the following example, I enable the controller to throw an error and use `try...catch` block to capture all errors.
 
 ```js
+// tonic ^6.0.0
 const foo = (parameters, callback) => {
     setTimeout(() => {
         callback(parameters);
