@@ -376,9 +376,7 @@ The last step is to curry the asynchronous functions into functions that take a 
  * @param {Function}
  * @param {...*}
  */
-const curry = (method) => {
-    const args = Array.prototype.slice.call(arguments, 1);
-
+const curry = (method, ...args) => {
     return (callback) => {
         args.push(callback);
 
@@ -397,9 +395,7 @@ const foo = (parameters, callback) => {
     }, 100);
 };
  
-const curry = (method) => {
-    const args = Array.prototype.slice.call(arguments, 1);
- 
+const curry = (method, ...args) => {
     return (callback) => {
         args.push(callback);
  
@@ -471,12 +467,10 @@ const foo = (parameters, callback) => {
     }, 100);
 };
 
-const curry = (method) => {
-    var args = Array.prototype.slice.call(arguments, 1);
- 
+const curry = (method, ...args) => {
     return (callback) => {
         args.push(callback);
- 
+
         return method.apply({}, args);
     };
 };
@@ -517,6 +511,7 @@ controller(function* () {
 
 // Something went wrong.
 // a undefined undefined
+
 ```
 
 Notice that the execution was interrupted before `curry(foo, 'c')` was called.
