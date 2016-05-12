@@ -525,6 +525,10 @@ Notice that the execution was interrupted before `curry(foo, 'c')` was called.
 
 There are several existing libraries that implement a variation of the above controller, as well as offer interoperability with promises, trunks and other techniques.
 
+## Further Reading
+
+[Exploring ES6](http://exploringjs.com/) has a chapter about [Generators](http://exploringjs.com/es6/ch_generators.html). [Axel Rauschmayer](https://twitter.com/rauschma) write up about generators covers a lot more than I managed to cover in this article. It is a lengthy read, though I thoroughly recommend it.
+
 * https://github.com/jmar777/suspend
 * https://github.com/visionmedia/co
 * https://github.com/bjouhier/galaxy
