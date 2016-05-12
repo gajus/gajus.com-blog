@@ -329,13 +329,13 @@ There are several solutions to address the issue, such as [using promises](https
 
 ```js
 // tonic ^6.0.0
-function* () {
+(function* () {
     const a = yield curry(foo, 'a');
     const b = yield curry(foo, 'b');
     const c = yield curry(foo, 'c');
  
     console.log(a, b, c);
-};
+});
 ```
 
 To execute the generator, we need a controller. The controller needs to fulfill the asynchronous requests and return the result back.
