@@ -2,133 +2,503 @@ There are many articles [^http://odetocode.com/blogs/scott/archive/2014/02/17/th
 
 ## Building an Iterator from a Generator
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/ybm22aur/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js 
+const generatorFunction = function* () {};
+const iterator = generatorFunction();
+```
 
-<code>generatorFunction</code> variable is assigned a <em>generator function</em>. Generator functions are denoted using <code>function *</code> syntax.</p>
+`generatorFunction` variable is assigned a <em>generator function</em>. Generator functions are denoted using `function*` syntax.
 
-Calling a generator function returns an <em>iterator object</em>.</p>
+Calling a generator function returns an <em>iterator object</em>.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/g15f9g1e/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js 
+const generatorFunction = function* () {
+    // This does not get executed.
+    console.log('a');
+};
+
+console.log(1);
+const iterator = generatorFunction();
+console.log(2);
+ 
+// 1
+// 2
+```
 
 ## Advancing the Generator
 
-<code>next()</code> method is used to advance the execution of the generator body:</p>
+`next()` method is used to advance the execution of the generator body:
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/x9t25kqc/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js 
+const generatorFunction = function* () {
+    console.log('a');
+};
 
-<code>next()</code> method returns an object that indicates the progress of the iteration:</p>
+console.log(1);
+const iterator = generatorFunction();
+console.log(2);
+iterator.next();
+console.log(3);
+ 
+// 1
+// 2
+// a
+// 3
+```
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/4mbLfsq9/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+`next()` method returns an object that indicates the progress of the iteration:
 
-<code>done</code> property indicates that the generator body has been run to the completion.</p>
+```js
+const generatorFunction = function* () {};
+const iterator = generatorFunction();
+ 
+console.log(iterator.next());
+ 
+// Object {value: undefined, done: true}
+```
 
-The generator function is expected to utilize <code>yield</code> keyword. <code>yield</code> suspends execution of a generator and returns control to the iterator.</p>
+`done` property indicates that the generator body has been run to the completion.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/hqjs6x0r/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+The generator function is expected to utilize `yield` keyword. `yield` suspends execution of a generator and returns control to the iterator.
 
-When suspended, the generator does not block the event queue:</p>
+```js
+const generatorFunction = function* () {
+    yield;
+};
+const iterator = generatorFunction();
+ 
+console.log(iterator.next());
+console.log(iterator.next());
+ 
+// Object {value: undefined, done: false}
+// Object {value: undefined, done: true}
+```
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/rc1o4h4q/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+When suspended, the generator does not block the event queue:
+
+```js 
+const generatorFunction = function* () {
+    var i = 0;
+    while (true) {
+        yield i++;
+    }
+};
+ 
+const iterator = generatorFunction();
+ 
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+ 
+// Object {value: 0, done: false}
+// Object {value: 1, done: false}
+// Object {value: 2, done: false}
+// Object {value: 3, done: false}
+// Object {value: 4, done: false}
+// Object {value: 5, done: false}
+```
 
 ## Pass a Value To the Iterator
 
-<code>yield</code> keyword can pass a value back to the iterator:</p>
+`yield` keyword can pass a value back to the iterator:
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/dv0h3nqz/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js 
+const generatorFunction = function* () {
+    yield 'foo';
+};
 
-Any data type can be yielded, including functions, numbers, arrays and objects.</p>
+iterator = generatorFunction();
+ 
+console.log(iterator.next());
+console.log(iterator.next());
+ 
+// Object {value: "foo", done: false}
+// Object {value: undefined, done: true}
+```
 
-When the generator is advanced to the completion, the <code>return</code> value is returned.</p>
+Any data type can be yielded, including functions, numbers, arrays and objects.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/4mohv6qa/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+When the generator is advanced to the completion, the `return` value is returned.
+
+```js
+const generatorFunction = function* () {
+    yield 'foo';
+    return 'bar';
+};
+
+const iterator = generatorFunction();
+ 
+console.log(iterator.next());
+console.log(iterator.next());
+ 
+// Object {value: "foo", done: false}
+// Object {value: "bar", done: true}
+```
 
 ## Receive a Value From the Iterator
 
-<code>yield</code> keyword can receive a value back from the iterator:</p>
+`yield` keyword can receive a value back from the iterator:
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/ygsertzo/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+const generatorFunction = function* () {
+    console.log(yield);
+};
+ 
+const iterator = generatorFunction();
+ 
+iterator.next('foo');
+iterator.next('bar');
+ 
+// bar
+```
 
-There is no <code>yield</code> expression to receive the first value "foo". The value is tossed-away.</p>
+There is no `yield` expression to receive the first value "foo". The value is tossed-away.
 
 ## Understanding the Execution Flow
 
-The best way to understand the execution flow of the generators is to play around using a <code>debugger</code>. I have illustrated the example that I have used to wrap my head around the I/O order.</p>
+The best way to understand the execution flow of the generators is to play around using a `debugger`. I have illustrated the example that I have used to wrap my head around the I/O order.
 
 <figure class="image">
     <img src="./generators.gif">
     <figcaption>Animated execution flow of the ES6 generators.</figcaption>
 </figure>
 
-## Iterating Using the <code>for...of</code> Statement
+## Iterating Using the `for...of` Statement
 
-The iterator object returned from the generator is compliant with the ["iterable"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/iterable) protocol. Therefore, you can use the [<code>for...of</code> statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) to loop through the generator.</p>
+The iterator object returned from the generator is compliant with the ["iterable"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/iterable) protocol. Therefore, you can use the [`for...of` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) to loop through the generator.
 
-<code data-gist-id="d16ceb1b0b664405a63b"></code>
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/AAA/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+let index;
+ 
+const generatorFunction = function* () {
+    yield 1;
+    yield 2;
+    yield 3;
+    return 4;
+};
 
-* The iteration will continue as long as <code>done</code> property is <code>false</code>.
-* The <code>for..of</code> loop cannot be used in cases where you need to pass in values to the generator steps.
-* The <code>for..of</code> loop will throw away the <code>return</code> value.
+const iterator = generatorFunction();
 
-## Delegating <code>yield</code>
+for (index of iterator) {
+    console.log(index);
+}
 
-The <code>yield*</code>operator delegates to another generator.</p>
+// 1
+// 2
+// 3
+```
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/dsmqe0r7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+* The iteration will continue as long as `done` property is `false`.
+* The `for..of` loop cannot be used in cases where you need to pass in values to the generator steps.
+* The `for..of` loop will throw away the `return` value.
 
-Delegating a generator to another generator is in effect the same as importing the body of the target generator to the destination generator. For illustration purposes only, the above code unfolds to the following:</p>
+## Delegating `yield`
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/2hjnkjhL/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+The `yield*`operator delegates to another generator.
+
+```js
+let index;
+ 
+const foo = function* () {
+    yield 'foo';
+    yield * bar();
+};
+ 
+const bar = function* () {
+    yield 'bar';
+    yield * baz();
+};
+ 
+const baz = function* () {
+    yield 'baz';
+};
+ 
+for (index of foo()) {
+    console.log(index);
+}
+ 
+// foo
+// bar
+// baz
+```
+
+Delegating a generator to another generator is in effect the same as importing the body of the target generator to the destination generator. For illustration purposes only, the above code unfolds to the following:
+
+```js
+let index;
+ 
+const foo = function* () {
+    yield 'foo';
+    yield 'bar';
+    yield 'baz';
+};
+ 
+for (index of foo()) {
+    console.log(index);
+}
+ 
+// foo
+// bar
+// baz
+```
 
 ## Throw
 
-In addition to advancing the generator instance using <code>next()</code>, you can <code>throw()</code>. Whatever is thrown will propagate back up into the code of the generator, i.e. it can be handled either within or outside the generator instance:</p>
+In addition to advancing the generator instance using `next()`, you can `throw()`. Whatever is thrown will propagate back up into the code of the generator, i.e. it can be handled either within or outside the generator instance:
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/j040qjm7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js 
+const generatorFunction = function* () {
+    while (true) {
+        try {
+            yield;
+        } catch (e) {
+            if (e != 'a') {
+                throw e;
+            }
+            console.log('Generator caught', e);
+        }
+    }
+};
+ 
+const iterator = generatorFunction();
+ 
+iterator.next();
+ 
+try {
+    iterator.throw('a');
+    iterator.throw('b');
+} catch (e) {
+    console.log('Uncaught', e);
+}
+ 
+// Generator caught a
+// Uncaught b
+```
 
-Any data type can be thrown, including functions, numbers, arrays and objects.</p>
+Any data type can be thrown, including functions, numbers, arrays and objects.
 
 ## What Problem Do Generators Solve?
 
-In JavaScript, IO operations are generally done as asynchronous operations that require a callback. For the purpose of illustration, I am going to use a made-up service <code>foo</code>:</p>
+In JavaScript, IO operations are generally done as asynchronous operations that require a callback. For the purpose of illustration, I am going to use a made-up service `foo`:
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/sgedyq6p/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+const foo = (parameters, callback) => {
+    setTimeout(() => {
+        callback(parameters);
+    }, 100);
+};
+```
 
-Multiple asynchronous operations one after another produce nesting that is hard to read.</p>
+Multiple asynchronous operations one after another produce nesting that is hard to read.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/hxacjzr3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+foo('a', (a) => {
+    foo('b', (b) => {
+        foo('c', (c) => {
+            console.log(a, b, c);
+        });
+    });
+});
+ 
+// a b c
+```
 
-There are several solutions to address the issue, such as [using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or generators. Using generators, the above code can be rewritten as such:</p>
+There are several solutions to address the issue, such as [using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or generators. Using generators, the above code can be rewritten as such:
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/L6nkd1hm/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+function* () {
+    const a = yield curry(foo, 'a');
+    const b = yield curry(foo, 'b');
+    const c = yield curry(foo, 'c');
+ 
+    console.log(a, b, c);
+};
+```
 
-To execute the generator, we need a controller. The controller needs to fulfill the asynchronous requests and return the result back.</p>
+To execute the generator, we need a controller. The controller needs to fulfill the asynchronous requests and return the result back.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/r3461eok/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+/**
+ * Initiates a generator and iterates through each function supplied
+ * via the yield operator.
+ * 
+ * @param {Function}
+ */
+const controller = (generator) => {
+    const iterator = generator();
+ 
+    const advancer = (response) => {
+        // Advance the iterator using the response of an asynchronous callback.
+        const state = iterator.next(response);
+ 
+        if (!state.done) {
+            // Make the asynchronous function call the advancer.
+            state.value(advancer);
+        }
+    }
+ 
+    advancer();
+};
+```
 
-The last step is to curry the asynchronous functions into functions that take a single parameter (the callback). This allows to iterate the generator instance knowing that <code>yield</code> expression is always expecting a singe parameter, the callback that is used to further advance the iteration.</p>
+The last step is to curry the asynchronous functions into functions that take a single parameter (the callback). This allows to iterate the generator instance knowing that `yield` expression is always expecting a singe parameter, the callback that is used to further advance the iteration.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/672L4d0a/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+/**
+ * Transforms a function that takes multiple arguments into a
+ * function that takes just the last argument of the original function.
+ *
+ * @param {Function}
+ * @param {...*}
+ */
+const curry = (method) => {
+    const args = Array.prototype.slice.call(arguments, 1);
 
-The end result is a script without too many levels of nested callbacks and achieved line independence (the code for one operation is no longer tied to the ones that come after it).</p>
+    return (callback) => {
+        args.push(callback);
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/1mrfg2nf/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        return method.apply({}, args);
+    };
+};
+```
+
+The end result is a script without too many levels of nested callbacks and achieved line independence (the code for one operation is no longer tied to the ones that come after it).
+
+```js
+const foo = (parameters, callback) => {
+    setTimeout(() => {
+        callback(parameters);
+    }, 100);
+};
+ 
+const curry = (method) => {
+    const args = Array.prototype.slice.call(arguments, 1);
+ 
+    return (callback) => {
+        args.push(callback);
+ 
+        return method.apply({}, args);
+    };
+};
+ 
+const controller = (generator) => {
+    const iterator = generator();
+ 
+    const advancer = (response) => {
+        var state;
+ 
+        state = iterator.next(response);
+ 
+        if (!state.done) {
+            state.value(advancer);
+        }
+    }
+ 
+    advancer();
+};
+ 
+controller(function* () {
+    const a = yield curry(foo, 'a');
+    const b = yield curry(foo, 'b');
+    const c = yield curry(foo, 'c');
+ 
+    console.log(a, b, c);
+});
+ 
+// a b c
+```
 
 ## Error Handling
 
-It is common to handle the error handling for each individual asynchronous operation, e.g.</p>
+It is common to handle the error handling for each individual asynchronous operation, e.g.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/2z8ometa/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+foo('a', (a) => {
+    if (a.error) {
+        throw new Error(a.error);
+    }
+ 
+    foo('b', (b) => {
+        if (b.error) {
+            throw new Error(b.error);
+        }
+ 
+        foo('c', (c) => {
+            if (c.error) {
+                throw new Error(c.error);
+            }
+ 
+            console.log(a, b, c);
+        });
+    });
+});
+```
 
-In the following example, I enable the controller to throw an error and use <code>try...catch</code> block to capture all errors.</p>
+In the following example, I enable the controller to throw an error and use `try...catch` block to capture all errors.
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/gajus/p0hmsbfq/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+```js
+const foo = (parameters, callback) => {
+    setTimeout(() => {
+        callback(parameters);
+    }, 100);
+};
 
-Notice that the execution was interrupted before <code>curry(foo, 'c')</code> was called.</p>
+const curry = (method) => {
+    var args = Array.prototype.slice.call(arguments, 1);
+ 
+    return (callback) => {
+        args.push(callback);
+ 
+        return method.apply({}, args);
+    };
+};
+
+const controller = (generator) => {
+    const iterator = generator();
+
+    const advancer = (response) => {
+        if (response && response.error) {
+            return iterator.throw(response.error);
+        }
+
+        const state = iterator.next(response);
+
+        if (!state.done) {
+            state.value(advancer);
+        }
+    }
+
+    advancer();
+};
+
+controller(function* () {
+    let a,
+        b,
+        c;
+
+    try {
+        a = yield curry(foo, 'a');
+        b = yield curry(foo, {error: 'Something went wrong.'});
+        c = yield curry(foo, 'c');
+    } catch (e) {
+        console.log(e);
+    }
+
+    console.log(a, b, c);
+});
+
+// Something went wrong.
+// a undefined undefined
+```
+
+Notice that the execution was interrupted before `curry(foo, 'c')` was called.
 
 ## Libraries To Streamline Generator Based Flow-Control
 
-There are several existing libraries that implement a variation of the above controller, as well as offer interoperability with promises, trunks and other techniques.</p>
+There are several existing libraries that implement a variation of the above controller, as well as offer interoperability with promises, trunks and other techniques.
 
 * https://github.com/jmar777/suspend
 * https://github.com/visionmedia/co
