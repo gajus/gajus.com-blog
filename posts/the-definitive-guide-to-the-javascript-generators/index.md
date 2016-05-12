@@ -436,25 +436,33 @@ It is common to handle the error handling for each individual asynchronous opera
 
 ```js
 // tonic ^6.0.0
-foo('a', (a) => {
-    if (a.error) {
-        throw new Error(a.error);
+const foo = (name, callback) => {
+    callback(null, name);
+};
+
+foo('a', (error1, result1) => {
+    if (error1) {
+        throw new Error(error1);
     }
  
-    foo('b', (b) => {
-        if (b.error) {
-            throw new Error(b.error);
+    foo('b', (error2, result2) => {
+        if (error2) {
+            throw new Error(error2);
         }
  
-        foo('c', (c) => {
-            if (c.error) {
-                throw new Error(c.error);
+        foo('c', (error3, result3) => {
+            if (error3) {
+                throw new Error(error3);
             }
  
-            console.log(a, b, c);
+            console.log(result1, result2, result3);
         });
     });
 });
+
+// a
+// b
+// c
 ```
 
 In the following example, I enable the controller to throw an error and use `try...catch` block to capture all errors.
