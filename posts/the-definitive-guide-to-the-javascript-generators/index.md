@@ -427,7 +427,9 @@ controller(function* () {
     console.log(a, b, c);
 });
  
-// a b c
+// a
+// b
+// c
 ```
 
 ## Error Handling
