@@ -361,7 +361,7 @@ const controller = (generator) => {
  
     const advancer = (response) => {
         // Advance the iterator using the response of an asynchronous callback.
-        const state = iterator.next(response);
+        var state = iterator.next(response);
  
         if (!state.done) {
             // Make the asynchronous function call the advancer.
