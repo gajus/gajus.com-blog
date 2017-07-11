@@ -1,1 +1,1 @@
-The contents of the http://gajus.com/blog/.
+Contents of the http://gajus.com/blog/.
