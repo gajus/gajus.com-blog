@@ -373,7 +373,7 @@ const controller = (generator) => {
 };
 ```
 
-The last step is to curry the asynchronous functions into functions that take a single parameter (the callback). This allows to iterate the generator instance knowing that `yield` expression is always expecting a singe parameter, the callback that is used to further advance the iteration.
+The last step is to curry the asynchronous functions into functions that take a single parameter (the callback). This allows to iterate the generator instance knowing that `yield` expression is always expecting a single parameter, the callback that is used to further advance the iteration.
 
 ```js
 // tonic ^6.0.0
