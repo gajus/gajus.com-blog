@@ -481,7 +481,14 @@ In the following example, I enable the controller to throw an error and use `try
 // tonic ^6.0.0
 const foo = (parameters, callback) => {
     setTimeout(() => {
-        callback(parameters);
+        callback(null, parameters);
+    }, 100);
+};
+
+const boom = (parameters, callback) => {
+    setTimeout(() => {
+        const error = new Error('Something went wrong.');
+        callback(error);
     }, 100);
 };
 
@@ -496,12 +503,13 @@ const curry = (method, ...args) => {
 const controller = (generator) => {
     const iterator = generator();
 
-    const advancer = (response) => {
-        if (response && response.error) {
-            return iterator.throw(response.error);
+    const advancer = (...response) => {
+        const [error, data] = response;
+        if (error) {
+            return iterator.throw(error);
         }
 
-        const state = iterator.next(response);
+        const state = iterator.next(data);
 
         if (!state.done) {
             state.value(advancer);
@@ -518,10 +526,10 @@ controller(function* () {
 
     try {
         a = yield curry(foo, 'a');
-        b = yield curry(foo, {error: 'Something went wrong.'});
+        b = yield curry(boom, 'b');
         c = yield curry(foo, 'c');
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 
     console.log(a, b, c);
