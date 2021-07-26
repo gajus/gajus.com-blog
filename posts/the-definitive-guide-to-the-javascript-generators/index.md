@@ -328,9 +328,7 @@ foo('a', (a) => {
     });
 });
  
-// a
-// b
-// c
+// a b c
 ```
 
 There are several solutions to address the issue, such as [using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or generators. Using generators, the above code can be rewritten as such:
