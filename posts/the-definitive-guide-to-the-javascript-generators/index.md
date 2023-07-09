@@ -1,4 +1,13 @@
-There are many articles [^http://odetocode.com/blogs/scott/archive/2014/02/17/thoughts-on-javascript-generators.aspx] [^http://truffles.me.uk/playing-with-es6-generators-to-make-a-maybe-in-javascript] [^http://devsmash.com/blog/whats-the-big-deal-with-generators] [^http://luisvega.me/understanding-node-generators] [^http://webreflection.blogspot.com/2013/06/on-harmony-javascript-generators.html] [^http://blog.alexmaccaw.com/how-yield-will-transform-node] [^http://tobyho.com/2013/06/16/what-are-generators/] about JavaScript generators. I have read them all and nonetheless I have struggled to understand the execution order and what are the use cases. I have summarized the learning process that got me to understanding ES6 generators.
+There are many articles about JavaScript generators: 
+- [Thoughts on Javascript Generators](http://odetocode.com/blogs/scott/archive/2014/02/17/thoughts-on-javascript-generators.aspx)
+- [Playing with ES6 Generators to Make a Maybe in Javascript](http://truffles.me.uk/playing-with-es6-generators-to-make-a-maybe-in-javascript)
+- [What's the Big Deal with Generators?](http://devsmash.com/blog/whats-the-big-deal-with-generators)
+- [Understanding Node Generators](http://luisvega.me/understanding-node-generators)
+- [On Harmony Javascript Generators](http://webreflection.blogspot.com/2013/06/on-harmony-javascript-generators.html)
+- [How Yield Will Transform Node](http://blog.alexmaccaw.com/how-yield-will-transform-node)
+- [What are Generators?](http://tobyho.com/2013/06/16/what-are-generators/)
+
+I have read them all and nonetheless I have struggled to understand the execution order and what are the use cases. I have summarized the learning process that got me to understanding ES6 generators.
 
 ## Building an Iterator from a Generator
 
